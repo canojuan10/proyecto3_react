@@ -19,6 +19,10 @@ function App() {
         <Route path="/user" element={<UserDetail />}></Route>
         <Route path="/details" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route
+          path="/user/validate/:registrationCode"
+          element={<Register />}
+        ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />
