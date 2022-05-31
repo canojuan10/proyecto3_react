@@ -1,24 +1,18 @@
 import useNews from "../../hooks/useNews";
 import { NewsFilter } from "../../components/NewsFilter";
+import { NewsList } from "../../components/NewsList";
+import { Calendar } from "../../components/Calendar";
+
 export const Home = () => {
-  const { news, loading, error, setDate, setTopic, topic } = useNews();
+  const { news, loading, error, setDate, setTopic, topic, date } = useNews();
   if (loading) return <p>Cargando</p>;
   if (error) console.log(error);
-  console.log(news);
   return (
     <div>
+      <Calendar date={date} setDate={setDate} />
       <h1>Latest tweets</h1>
       <NewsFilter setDate={setDate} setTopic={setTopic} topic={topic} />
-      <section>
-        {news.map((_new, index) => {
-          return (
-            <article key={index}>
-              <p>{_new.title}</p>
-              <p>{_new.entradilla}</p>
-            </article>
-          );
-        })}
-      </section>
+      <NewsList news={news} />
     </div>
   );
 };

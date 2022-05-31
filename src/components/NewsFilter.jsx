@@ -11,12 +11,12 @@ export const NewsFilter = ({ setDate, setTopic, topic }) => {
       <fieldset>
         <label htmlFor="topic">Tema</label>
         <select
+          autoFocus
           value={chooseOption}
           name="topic"
           id="topic"
           onChange={(e) => {
             setTopic(e.target.value);
-            console.log(e.target.value);
           }}
         >
           <option value="">Todos los temas</option>
@@ -26,7 +26,7 @@ export const NewsFilter = ({ setDate, setTopic, topic }) => {
           <option value="tecnologia">Tecnología</option>
           <option value="viajes">Viajes</option>
           <option value="economia">Economía</option>
-          <option value="entrenimiento">Entretenimiento</option>
+          <option value="entretenimiento">Entretenimiento</option>
           <option value="salud">Salud</option>
           <option value="internacional">Internacional</option>
           <option value="galicia">Galicia</option>
@@ -37,6 +37,7 @@ export const NewsFilter = ({ setDate, setTopic, topic }) => {
 };
 
 NewsFilter.propTypes = {
+  topic: propTypes.string.isRequired,
   setDate: propTypes.func.isRequired,
   setTopic: propTypes.func.isRequired,
 };

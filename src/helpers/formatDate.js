@@ -1,2 +1,5 @@
-const currentDate = new Date().toISOString().split("T");
-export const formatedCurrentDate = `${currentDate[0]}`;
+export const dateFormater = (date) => {
+  const arrayFormatedDate = date.toISOString().split("T");
+  const formatedCurrentDate = `${arrayFormatedDate[0]}`;
+  return formatedCurrentDate;
+};
