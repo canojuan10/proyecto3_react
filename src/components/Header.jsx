@@ -8,7 +8,9 @@ export const Header = () => {
         <Link to={"/"}>HACK A NEW</Link>
       </h1>
       <nav>
-        <p>login/register</p>
+        <Link to={"/login"}>Login</Link>
+        <br></br>
+        <Link to={"/register"}>Register</Link>
       </nav>
     </header>
   );
