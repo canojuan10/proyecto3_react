@@ -8,6 +8,7 @@ import { NotFound } from "./view/NotFound/NotFound";
 import { Register } from "./view/Register/Register";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { ValidationCode } from "./view/ValidationCode/ValidationCode";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="/user" element={<UserDetail />}></Route>
         <Route path="/details" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route
+          path="/user/validate/:registrationCode"
+          element={<ValidationCode />}
+        ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />
