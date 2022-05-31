@@ -19,7 +19,6 @@ export const Register = () => {
         password,
         bio,
       });
-      console.log(messageValidate);
       setMessage(messageValidate);
       setError("");
     } catch (error) {
