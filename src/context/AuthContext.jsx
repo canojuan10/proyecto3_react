@@ -1,0 +1,44 @@
+import { createContext, useEffect, useState } from "react";
+
+export const AuthContext = createContext(null);
+
+export const AuthContextProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
+
+  useEffect(() => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [token, user]);
+
+  //   useEffect(() => {
+  //     const getUserData = async () => {
+  //       try {
+  //         const data = await getMyUserService(token);
+
+  //         setUser(data);
+  //       } catch (error) {
+  //         setToken("");
+  //         setUser(null);
+  //       }
+  //     };
+
+  //     if (token) getUserData();
+  //   }, [token, setToken]);
+
+  const logout = () => {
+    setToken("");
+    setUser(null);
+  };
+  const login = (token) => {
+    setToken(token);
+  };
+
+  return (
+    <AuthContext.Provider value={{ token, user, login, logout, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
