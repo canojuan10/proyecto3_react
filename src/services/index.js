@@ -22,3 +22,14 @@ export const createUserService = async ({ name, email, password, bio }) => {
   }
   return json.message;
 };
+export const validateUser = async ({ registrationCode }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/validate/${registrationCode}`
+  );
+
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
