@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { UserManagment } from "./UserManagment";
 
 export const Header = () => {
   return (
@@ -8,9 +9,7 @@ export const Header = () => {
         <Link to={"/"}>HACK A NEW</Link>
       </h1>
       <nav>
-        <Link to={"/login"}>Login</Link>
-        <br></br>
-        <Link to={"/register"}>Register</Link>
+        <UserManagment />
       </nav>
     </header>
   );

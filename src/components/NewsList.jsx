@@ -1,4 +1,4 @@
-export const NewsList = ({ news }) => {
+export const NewsList = ({ news, error }) => {
   return news.length ? (
     <ul>
       {news
@@ -13,7 +13,9 @@ export const NewsList = ({ news }) => {
           );
         })}
     </ul>
+  ) : error ? (
+    <h2>problemas de conexión con el servidor</h2>
   ) : (
-    <h2>No hay ninguna noticia sobre este tema</h2>
+    <p>no hay noticias sobre el tema</p>
   );
 };
