@@ -33,13 +33,12 @@ export const validateUser = async ({ registrationCode }) => {
   return json.message;
 };
 export const getNewByIdService = async (idNew) => {
-  console.log(idNew, "idNew en useEffect");
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
   );
-  console.log(response, "response aquí");
+
   const json = await response.json();
-  console.log(json, "json aqui");
+
   if (!response.ok) throw new Error(json.message);
   return json.data;
 };
