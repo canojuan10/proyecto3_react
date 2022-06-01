@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/user" element={<UserDetail />}></Route>
-        <Route path="/details" element={<NewDetail />}></Route>
+        <Route path="/new/:idNew" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route
           path="/user/validate/:registrationCode"

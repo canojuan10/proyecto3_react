@@ -34,6 +34,17 @@ export const validateUser = async ({ registrationCode }) => {
   return json.message;
 };
 
+export const getNewByIdService = async (idNew) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/news/${idNew}`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) throw new Error(json.message);
+    return json.data;
+};
+
 // export const getMyUserService = async (token) => {
 //   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
 
@@ -52,6 +63,5 @@ export const logInUserService = async ({ email, password }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-
   return json.data;
 };
