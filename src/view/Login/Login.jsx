@@ -34,7 +34,7 @@ export const Login = () => {
       try {
         navigate("/");
       } catch (error) {
-        console.log(error);
+        setError(error.message);
       }
     };
     if (user) noReLogin();
