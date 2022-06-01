@@ -7,26 +7,11 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-
+  console.log(user);
   useEffect(() => {
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
   }, [token, user]);
-
-  //   useEffect(() => {
-  //     const getUserData = async () => {
-  //       try {
-  //         const data = await getMyUserService(token);
-
-  //         setUser(data);
-  //       } catch (error) {
-  //         setToken("");
-  //         setUser(null);
-  //       }
-  //     };
-
-  //     if (token) getUserData();
-  //   }, [token, setToken]);
 
   const logout = () => {
     setToken("");

@@ -1,5 +1,4 @@
 export const NewsList = ({ news, error }) => {
-  console.log(news);
   return news.length ? (
     <ul>
       {news
