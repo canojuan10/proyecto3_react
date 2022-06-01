@@ -18,6 +18,7 @@ export const CreateNew = () => {
     try {
       setLoading(true);
       const data = new FormData(e.target);
+      if (!data.get("entradilla")) data.delete("entradilla");
 
       const _new = await sendNewService({
         data,
@@ -57,7 +58,7 @@ export const CreateNew = () => {
           <textarea
             name="entradilla"
             id="subtitle"
-            minLength={15}
+            minLength={0}
             maxLength={100}
           ></textarea>
         </fieldset>

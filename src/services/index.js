@@ -1,5 +1,3 @@
-import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
-
 export const getAllNewsService = async ({ date, topic }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/?modifiedAt=${date}&topic=${topic}`
@@ -37,14 +35,19 @@ export const validateUser = async ({ registrationCode }) => {
 };
 
 export const getNewByIdService = async (idNew) => {
-  const response = await fetch(
+  const responseNew = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
   );
 
-  const json = await response.json();
+  const responseImage = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`
+  );
+  const { data: dataNew, message: messageNew } = await responseNew.json();
+  const { data: dataImage, message: messageImage } = await responseImage.json();
 
-  if (!response.ok) throw new Error(json.message);
-  return json.data;
+  if (!responseNew.ok) throw new Error(messageNew);
+  if (!responseImage.ok) throw new Error(messageImage);
+  return { dataNew, dataImage };
 };
 
 // export const getMyUserService = async (token) => {

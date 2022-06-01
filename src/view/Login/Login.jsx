@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 // import { logInUserService } from "../services";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { logInUserService } from "../../services/index";
 
@@ -29,18 +29,20 @@ export const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const noReLogin = async () => {
-      try {
-        navigate("/");
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    if (user) noReLogin();
-  });
+  // useEffect(() => {
+  //   const noReLogin = async () => {
+  //     try {
+  //       navigate("/");
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+  //   if (user) noReLogin();
+  // });
 
-  return user ? null : (
+  return user ? (
+    <Navigate to="/" />
+  ) : (
     <section>
       <h1>Login</h1>
       <form onSubmit={handleForm}>
