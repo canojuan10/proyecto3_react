@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { sendNewService } from "../../services";
+import { Topics } from "../../components/Topics";
 
 export const CreateNew = () => {
   const { token } = useContext(AuthContext);
@@ -62,31 +63,7 @@ export const CreateNew = () => {
             maxLength={100}
           ></textarea>
         </fieldset>
-        <fieldset>
-          <label htmlFor="topic">Tema</label>
-          <select
-            required
-            autoFocus
-            value={chooseOption}
-            name="topic"
-            id="topic"
-            onChange={(e) => {
-              setTopic(e.target.value);
-            }}
-          >
-            <option value="">Todos los temas</option>
-            <option value="politica">Política</option>
-            <option value="espana">España</option>
-            <option value="deportes">Deportes</option>
-            <option value="tecnologia">Tecnología</option>
-            <option value="viajes">Viajes</option>
-            <option value="economia">Economía</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="salud">Salud</option>
-            <option value="internacional">Internacional</option>
-            <option value="galicia">Galicia</option>
-          </select>
-        </fieldset>
+        <Topics value={chooseOption} setValue={setTopic} />
         <fieldset>
           <label htmlFor="description">Noticia</label>
           <textarea
