@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllNewsService, getNewByIdService } from "../services/index";
+import { getAllNewsService } from "../services/index";
 import { dateFormater } from "../helpers/formatDate";
-export const useNews = (idNew = "") => {
+export const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,11 +12,11 @@ export const useNews = (idNew = "") => {
     const loadNews = async () => {
       try {
         setLoading(true);
-        const data = idNew
-          ? await getNewByIdService(idNew)
-          : await getAllNewsService();
-        // const data = await getAllNewsService({ date, topic });
-        console.log(data, "aqui data");
+        // const data = id
+        //   ? await getUserNewsService(id)
+        //   : await getAllNewsService();
+        const data = await getAllNewsService({ date, topic });
+
         setNews(data);
       } catch (error) {
         setError(error.message);
@@ -26,7 +26,7 @@ export const useNews = (idNew = "") => {
     };
 
     loadNews();
-  }, [date, topic, idNew]);
+  }, [date, topic]);
 
   //   const addTweet = (data) => {
   //     setTweets([data, ...tweets]);

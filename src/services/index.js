@@ -32,7 +32,8 @@ export const validateUser = async ({ registrationCode }) => {
   }
   return json.message;
 };
-export const getNewByIdService = async ({ idNew }) => {
+export const getNewByIdService = async (idNew) => {
+  console.log(idNew, "idNew en useEffect");
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
   );
