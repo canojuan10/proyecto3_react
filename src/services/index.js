@@ -36,8 +36,6 @@ export const validateUser = async ({ registrationCode }) => {
   return json.message;
 };
 
-
-
 export const getNewByIdService = async (idNew) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
@@ -71,13 +69,12 @@ export const logInUserService = async ({ email, password }) => {
   return json.data;
 };
 
-export const sendNewService = async ({ data, bearerToken }) => {
-  console.log(bearerToken);
+export const sendNewService = async ({ data, token }) => {
   const responseNew = await fetch(`${process.env.REACT_APP_BACKEND}/new`, {
     method: "POST",
     body: data,
     headers: {
-      Authorization: bearerToken,
+      Authorization: token,
     },
   });
   const { message: messageNew, idNew } = await responseNew.json();
@@ -91,7 +88,7 @@ export const sendNewService = async ({ data, bearerToken }) => {
       method: "POST",
       body: data,
       headers: {
-        Authorization: bearerToken,
+        Authorization: token,
       },
     }
   );

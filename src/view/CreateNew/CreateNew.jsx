@@ -19,11 +19,9 @@ export const CreateNew = () => {
       setLoading(true);
       const data = new FormData(e.target);
 
-      console.log(token);
-      const bearerToken = `Bearer ${token}`;
       const _new = await sendNewService({
         data,
-        bearerToken,
+        token,
       });
       setMessageConfirm(_new);
     } catch (err) {
