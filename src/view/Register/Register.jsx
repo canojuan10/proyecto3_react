@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+// import { useNavigate } from "react-router-dom";
 import { createUserService } from "../../services";
 
 export const Register = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
   const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
+  const [infoMessage, setInfoMessage] = useState("");
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -19,14 +22,24 @@ export const Register = () => {
         password,
         bio,
       });
-      console.log(messageValidate);
-      setMessage(messageValidate);
+      setInfoMessage(messageValidate);
       setError("");
     } catch (error) {
       setError(error.message);
-      setMessage("");
+      setInfoMessage("");
     }
   };
+
+  useEffect(() => {
+    const noReRegister = async () => {
+      try {
+        navigate("/");
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    if (user) noReRegister();
+  });
 
   return (
     <section>
@@ -82,9 +95,9 @@ export const Register = () => {
         <button>Crear usuario</button>
         {error ? <p>{error}</p> : null}
       </form>
-      {message ? (
+      {infoMessage ? (
         <div>
-          <p>{message}</p>
+          <p>{infoMessage}</p>
         </div>
       ) : null}
     </section>

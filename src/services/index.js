@@ -1,3 +1,5 @@
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
+
 export const getAllNewsService = async ({ date, topic }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/?modifiedAt=${date}&topic=${topic}`
@@ -34,6 +36,24 @@ export const validateUser = async ({ registrationCode }) => {
   return json.message;
 };
 
+
+
+export const getNewByIdService = async (idNew) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/news/${idNew}`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) throw new Error(json.message);
+  return json.data;
+};
+
+// export const getMyUserService = async (token) => {
+//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
+
+// };
+
 export const logInUserService = async ({ email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
     method: "POST",
@@ -48,6 +68,34 @@ export const logInUserService = async ({ email, password }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-
   return json.data;
+};
+
+export const sendNewService = async ({ data, bearerToken }) => {
+  console.log(bearerToken);
+  const responseNew = await fetch(`${process.env.REACT_APP_BACKEND}/new`, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: bearerToken,
+    },
+  });
+  const { message: messageNew, idNew } = await responseNew.json();
+  if (!responseNew.ok) {
+    throw new Error(messageNew);
+  }
+
+  const responseImage = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: bearerToken,
+      },
+    }
+  );
+  const { message: messageImage } = await responseImage.json();
+
+  return { messageImage, messageNew };
 };
