@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { validateUser } from "../../services";
 
@@ -7,21 +7,21 @@ export const ValidationCode = () => {
   const [validateMessage, setValidateMessage] = useState("");
   const [popUp, setPopUp] = useState("");
   const [error, setError] = useState(false);
+  const mounted = useRef(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     const validate = async () => {
       try {
         setValidateMessage(await validateUser({ registrationCode }));
         setPopUp(true);
-        setTimeout(() => {
-          navigate("/");
-        }, 5000);
       } catch (error) {
         setError(error.message);
       }
     };
-    validate();
-  });
+    if (!mounted.current) validate();
+    mounted.current = true;
+  }, [registrationCode, popUp, navigate]);
 
   return (
     <section>
@@ -34,15 +34,15 @@ export const ValidationCode = () => {
       {error ? (
         <>
           <h2>{error}</h2>
-          <button
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Volver a inicio
-          </button>
         </>
       ) : null}
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Volver a inicio
+      </button>
     </section>
   );
 };

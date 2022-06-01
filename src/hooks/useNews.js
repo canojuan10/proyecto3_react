@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllNewsService } from "../services/index";
 import { dateFormater } from "../helpers/formatDate";
+
 export const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);

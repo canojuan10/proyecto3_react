@@ -4,33 +4,42 @@ import { getNewByIdService } from "../../services";
 
 export const NewDetail = () => {
   const { idNew } = useParams();
-  const [_new, setNew] = useState([]);
+  const [_new, setNew] = useState({});
+  const [ok, setOk] = useState(false);
+
   const [err, setErr] = useState("");
   useEffect(() => {
-    console.log(idNew);
     const load = async () => {
       try {
         setNew(await getNewByIdService(idNew));
+        setOk(true);
       } catch (error) {
         console.error(error, "error");
         setErr(error.message);
       }
     };
     load();
-  }, [idNew]);
+  }, [idNew, ok]);
 
   return (
     <div>
-      {err ? (
+      {/* {err ? (
         <h2>{err}</h2>
-      ) : (
+      ) : ( */}
+      {ok ? (
         <>
-          <h2>{_new?.title}</h2>
-          <p>{_new?.entradilla}</p>
-          <p>{_new?.description}</p>
-          <p>{_new?.topic}</p>
+          <h2>{_new?.dataNew?.title}</h2>
+          <p>{_new?.dataNew?.entradilla}</p>
+          <p>{_new?.dataNew?.description}</p>
+          <p>{_new?.dataNew?.topic}</p>
+
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${_new.dataImage[0].url}`}
+            alt={_new?.dataNew?.title}
+          />
         </>
-      )}
+      ) : null}
+      {/* )} */}
     </div>
   );
 };
