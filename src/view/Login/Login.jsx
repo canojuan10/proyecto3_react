@@ -19,10 +19,10 @@ export const Login = () => {
         email,
         password,
       });
-
+      const bearerToken = `Bearer ${token}`;
       setUser(userDataPublic);
 
-      login(token);
+      login(bearerToken);
       navigate("/");
     } catch (error) {
       setError(error.message);
