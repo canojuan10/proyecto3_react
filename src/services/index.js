@@ -1,3 +1,5 @@
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
+
 export const getAllNewsService = async ({ date, topic }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/?modifiedAt=${date}&topic=${topic}`
@@ -42,7 +44,7 @@ export const getNewByIdService = async (idNew) => {
   const json = await response.json();
 
   if (!response.ok) throw new Error(json.message);
-    return json.data;
+  return json.data;
 };
 
 // export const getMyUserService = async (token) => {
@@ -64,4 +66,33 @@ export const logInUserService = async ({ email, password }) => {
     throw new Error(json.message);
   }
   return json.data;
+};
+
+export const sendNewService = async ({ data, bearerToken }) => {
+  console.log(bearerToken);
+  const responseNew = await fetch(`${process.env.REACT_APP_BACKEND}/new`, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: bearerToken,
+    },
+  });
+  const { message: messageNew, idNew } = await responseNew.json();
+  if (!responseNew.ok) {
+    throw new Error(messageNew);
+  }
+
+  const responseImage = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: bearerToken,
+      },
+    }
+  );
+  const { message: messageImage } = await responseImage.json();
+
+  return { messageImage, messageNew };
 };
