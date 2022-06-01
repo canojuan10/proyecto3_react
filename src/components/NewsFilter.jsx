@@ -16,6 +16,5 @@ export const NewsFilter = ({ setTopic, topic }) => {
 
 NewsFilter.propTypes = {
   topic: propTypes.string.isRequired,
-  setDate: propTypes.func.isRequired,
   setTopic: propTypes.func.isRequired,
 };
