@@ -2,6 +2,7 @@ export const getAllNewsService = async ({ date, topic }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/?modifiedAt=${date}&topic=${topic}`
   );
+
   const json = await response.json();
   if (!response.ok) throw new Error(json.message);
   return json.data;
@@ -31,4 +32,26 @@ export const validateUser = async ({ registrationCode }) => {
     throw new Error(json.message);
   }
   return json.message;
+};
+
+// export const getMyUserService = async (token) => {
+//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
+
+// };
+export const logInUserService = async ({ email, password }) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
 };
