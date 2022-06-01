@@ -36,6 +36,8 @@ export const validateUser = async ({ registrationCode }) => {
   return json.message;
 };
 
+
+
 export const getNewByIdService = async (idNew) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
@@ -51,6 +53,7 @@ export const getNewByIdService = async (idNew) => {
 //   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
 
 // };
+
 export const logInUserService = async ({ email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
     method: "POST",
