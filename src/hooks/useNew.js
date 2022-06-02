@@ -18,5 +18,5 @@ export const useNew = (idNew) => {
     };
     load();
   }, [idNew]);
-  return { _new, error, loading };
+  return { _new, error, loading, setError };
 };
