@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { sendNewService } from "../../services";
+import { Topics } from "../../components/Topics";
 
 export const CreateNew = () => {
   const { token } = useContext(AuthContext);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [messageConfirm, setMessageConfirm] = useState(null);
-  const [chooseOption, setChooseOption] = useState(""); //quitar al component
+  const [chooseOption, setChooseOption] = useState("");
   const [topic, setTopic] = useState("");
   useEffect(() => {
     setChooseOption(topic);
@@ -25,8 +25,8 @@ export const CreateNew = () => {
         token,
       });
       setMessageConfirm(_new);
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -62,31 +62,7 @@ export const CreateNew = () => {
             maxLength={100}
           ></textarea>
         </fieldset>
-        <fieldset>
-          <label htmlFor="topic">Tema</label>
-          <select
-            required
-            autoFocus
-            value={chooseOption}
-            name="topic"
-            id="topic"
-            onChange={(e) => {
-              setTopic(e.target.value);
-            }}
-          >
-            <option value="">Todos los temas</option>
-            <option value="politica">Política</option>
-            <option value="espana">España</option>
-            <option value="deportes">Deportes</option>
-            <option value="tecnologia">Tecnología</option>
-            <option value="viajes">Viajes</option>
-            <option value="economia">Economía</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="salud">Salud</option>
-            <option value="internacional">Internacional</option>
-            <option value="galicia">Galicia</option>
-          </select>
-        </fieldset>
+        <Topics value={chooseOption} setValue={setTopic} />
         <fieldset>
           <label htmlFor="description">Noticia</label>
           <textarea
@@ -102,8 +78,8 @@ export const CreateNew = () => {
           <input type="file" name="photo" id="image" accept={"image/*"} />
         </fieldset>
         <button>Send tweet</button>
-        {/* {error ? <p>{error}</p> : null}
-        {loading ? <p>posting tweet...</p> : null} */}
+        {error ? <p>{error}</p> : null}
+        {loading ? <p>posting tweet...</p> : null}
       </form>
     </>
   );
