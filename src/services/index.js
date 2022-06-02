@@ -99,4 +99,23 @@ export const sendNewService = async ({ data, token }) => {
   }
 
   return messageObject;
-}; //Gestionar el error del envio de la imagen
+};
+
+export const editNewService = async ({ data, token, idNew }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}`,
+    {
+      method: "PUT",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
