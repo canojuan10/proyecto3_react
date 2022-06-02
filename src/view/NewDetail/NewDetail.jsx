@@ -1,3 +1,9 @@
+import { useParams } from "react-router-dom";
+import { New } from "../../components/New";
+import { useNew } from "../../hooks/useNew";
+
 export const NewDetail = () => {
-  return <p>Detalles de la noticia</p>;
+  const { idNew } = useParams();
+  const { _new, error, loading } = useNew(idNew);
+  return loading ? null : <New _new={_new} isDetail={true} />;
 };

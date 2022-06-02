@@ -9,7 +9,7 @@ import { Register } from "./view/Register/Register";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ValidationCode } from "./view/ValidationCode/ValidationCode";
-
+import { CreateNew } from "./view/CreateNew/CreateNew";
 function App() {
   return (
     <div className="App">
@@ -18,8 +18,9 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/user" element={<UserDetail />}></Route>
-        <Route path="/details" element={<NewDetail />}></Route>
+        <Route path="/new/:idNew" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/createnew" element={<CreateNew />}></Route>
         <Route
           path="/user/validate/:registrationCode"
           element={<ValidationCode />}

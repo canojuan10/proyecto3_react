@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { getAllNewsService } from "../services/index";
-import { formatedCurrentDate } from "../helpers/formatDate";
+import { dateFormater } from "../helpers/formatDate";
+
 export const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [topic, setTopic] = useState("");
-  const [date, setDate] = useState(formatedCurrentDate);
+  const [date, setDate] = useState(dateFormater(new Date()));
 
   useEffect(() => {
     const loadNews = async () => {
@@ -32,12 +33,12 @@ export const useNews = () => {
   //     setTweets([data, ...tweets]);
   //   };
 
-  //   const removeTweet = (id) => {
-  //     setTweets(tweets.filter((tweet) => tweet.id !== id));
-  //   };
+  const deleteNew = (id) => {
+    setNews(news.filter((_new) => _new.id !== id));
+  };
 
   //   return { tweets, error, loading, addTweet, removeTweet };
-  return { news, error, loading, setTopic, setDate, topic };
+  return { news, error, loading, setTopic, setDate, topic, date, deleteNew };
 };
 
 export default useNews;
