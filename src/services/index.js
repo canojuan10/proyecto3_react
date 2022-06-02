@@ -99,6 +99,7 @@ export const sendNewService = async ({ data, token }) => {
   }
 
   return messageObject;
+
 };
 
 export const editNewService = async ({ data, token, idNew }) => {
@@ -107,15 +108,36 @@ export const editNewService = async ({ data, token, idNew }) => {
     {
       method: "PUT",
       body: data,
+
+};
+
+export const deleteNewService = async ({ id, token }) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/new/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+  const json = await response.json;
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const deletePhotoService = async ({ idPhoto, id, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${id}/photos/${idPhoto}`,
+    {
+      method: "DELETE",
       headers: {
         Authorization: token,
       },
     }
   );
+
   const json = await response.json();
   if (!response.ok) {
     throw new Error(json.message);
   }
-
-  return json.data;
 };

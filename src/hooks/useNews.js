@@ -33,12 +33,12 @@ export const useNews = () => {
   //     setTweets([data, ...tweets]);
   //   };
 
-  //   const removeTweet = (id) => {
-  //     setTweets(tweets.filter((tweet) => tweet.id !== id));
-  //   };
+  const deleteNew = (id) => {
+    setNews(news.filter((_new) => _new.id !== id));
+  };
 
   //   return { tweets, error, loading, addTweet, removeTweet };
-  return { news, error, loading, setTopic, setDate, topic, date };
+  return { news, error, loading, setTopic, setDate, topic, date, deleteNew };
 };
 
 export default useNews;
