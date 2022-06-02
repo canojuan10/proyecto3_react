@@ -38,10 +38,10 @@ export const getNewByIdService = async (idNew) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
   );
-  const _new = await response.json();
+  const json = await response.json();
 
-  if (!response.ok) throw new Error(_new.message);
-  return _new.data;
+  if (!response.ok) throw new Error(json.message);
+  return json.data;
 };
 
 // export const getMyUserService = async (token) => {
