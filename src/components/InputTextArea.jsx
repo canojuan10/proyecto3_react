@@ -1,17 +1,10 @@
 import propTypes from "prop-types";
 
-export const InputStringRegister = ({
-  value,
-  setValue,
-  inputType,
-  name,
-  label,
-}) => {
+export const InputTextArea = ({ value, setValue, name, label }) => {
   return (
     <fieldset>
       <label htmlFor={name}>{label}</label>
-      <input
-        type={inputType}
+      <textarea
         name={name}
         id={name}
         value={value}
@@ -23,10 +16,9 @@ export const InputStringRegister = ({
   );
 };
 
-InputStringRegister.propTypes = {
-  setValue: propTypes.func,
-  value: propTypes.string,
-  inputType: propTypes.string.isRequired,
+InputTextArea.propTypes = {
+  setValue: propTypes.func.isRequired,
+  value: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
 };

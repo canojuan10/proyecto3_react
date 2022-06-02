@@ -1,12 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { InputStringRegister } from "../../components/InputStringRegister";
+import { InputTextArea } from "../../components/InputTextArea";
 import { AuthContext } from "../../context/AuthContext";
-// import { useNavigate } from "react-router-dom";
 import { createUserService } from "../../services";
 
 export const Register = () => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,32 +41,29 @@ export const Register = () => {
           setValue={setName}
           inputType="text"
           name="name"
-          label="Nombre de usuario:"
+          label="Nombre de usuario: "
         />
         <InputStringRegister
           value={password}
           setValue={setPassword}
           inputType="password"
           name="password"
-          label="Password"
+          label="Password: "
         />
         <InputStringRegister
           value={email}
           setValue={setEmail}
           inputType="email"
           name="email"
-          label="Email"
+          label="Email: "
         />
-        <fieldset>
-          <label htmlFor="bio">Biografía:</label>
-          <textarea
-            type="textarea"
-            id="bio"
-            name="bio"
-            balue={bio}
-            onChange={(e) => setBio(e.target.value)}
-          />
-        </fieldset>
+        <InputTextArea
+          value={bio}
+          setValue={setBio}
+          name="bio"
+          label="Biografía: "
+        />
+
         <button>Crear usuario</button>
         {error ? <p>{error}</p> : null}
       </form>
