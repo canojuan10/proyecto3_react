@@ -1,5 +1,5 @@
 import { New } from "./New";
-export const NewsList = ({ news, error }) => {
+export const NewsList = ({ news, error, deleteNew }) => {
   return news.length ? (
     <ul>
       {news
@@ -8,7 +8,7 @@ export const NewsList = ({ news, error }) => {
         .map((_new, index) => {
           return (
             <li key={index}>
-              <New _new={_new} />
+              <New _new={_new} deleteNew={deleteNew} />
             </li>
           );
         })}

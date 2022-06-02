@@ -4,7 +4,8 @@ import { NewsList } from "../../components/NewsList";
 import { Calendar } from "../../components/Calendar";
 
 export const Home = () => {
-  const { news, loading, error, setDate, setTopic, topic, date } = useNews();
+  const { news, loading, error, setDate, setTopic, topic, date, deleteNew } =
+    useNews();
   if (loading) return <p>Cargando</p>;
   if (error) console.log(error);
   return (
@@ -12,7 +13,7 @@ export const Home = () => {
       <Calendar date={date} setDate={setDate} />
       <h1>Latest tweets</h1>
       <NewsFilter setTopic={setTopic} topic={topic} />
-      <NewsList news={news} error={error} />
+      <NewsList news={news} error={error} deleteNew={deleteNew} />
     </div>
   );
 };
