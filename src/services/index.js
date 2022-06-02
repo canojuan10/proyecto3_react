@@ -1,5 +1,3 @@
-import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
-
 export const getAllNewsService = async ({ date, topic }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/?modifiedAt=${date}&topic=${topic}`
