@@ -3,10 +3,6 @@ import { Navigate } from "react-router-dom";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { InputTextArea } from "../../components/InputTextArea";
 import { AuthContext } from "../../context/AuthContext";
-<<<<<<< HEAD
-
-=======
->>>>>>> b798b7e7b86098bf15f5106a7ad303ba034cc268
 import { createUserService } from "../../services";
 
 export const Register = () => {
