@@ -5,5 +5,5 @@ import { useNew } from "../../hooks/useNew";
 export const NewDetail = () => {
   const { idNew } = useParams();
   const { _new, error, loading } = useNew(idNew);
-  return loading ? null : <New _new={_new} />;
+  return loading ? null : <New _new={_new} isDetail={true} />;
 };

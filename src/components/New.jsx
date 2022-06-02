@@ -2,11 +2,12 @@ import propTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { stringDateFormater } from "../helpers/formatDate";
 
-export const New = ({ _new }) => {
+export const New = ({ _new, isDetail = false }) => {
   return (
     <article className="new">
       <h2>{_new?.title}</h2>
       <p className="entradilla">{_new?.entradilla}</p>
+      {isDetail ? <p className="description">{_new?.description}</p> : null}
       <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
       <p className="topic">{_new?.topic}</p>
       <p className="author">{_new?.name}</p>
@@ -17,8 +18,7 @@ export const New = ({ _new }) => {
           alt={_new?.title}
         />
       ) : null}
-
-      <Link to={`/new/${_new?.id}`}>+ info</Link>
+      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
     </article>
   );
 };
