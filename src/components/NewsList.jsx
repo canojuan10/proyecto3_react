@@ -1,7 +1,5 @@
-
-import { Link } from "react-router-dom";
+import { New } from "./New";
 export const NewsList = ({ news, error }) => {
-
   return news.length ? (
     <ul>
       {news
@@ -10,9 +8,7 @@ export const NewsList = ({ news, error }) => {
         .map((_new, index) => {
           return (
             <li key={index}>
-              <h2>{_new.title}</h2>
-              <p>{_new.entradilla}</p>
-              <Link to={`/new/${_new.id}`}>+ info</Link>
+              <New _new={_new} />
             </li>
           );
         })}

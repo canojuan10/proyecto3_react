@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-// import { logInUserService } from "../services";
+import { useContext, useState } from "react";
+import { logInUserService } from "../../services";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { logInUserService } from "../../services/index";
+import { InputStringRegister } from "../../components/InputStringRegister";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -29,47 +29,26 @@ export const Login = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const noReLogin = async () => {
-  //     try {
-  //       navigate("/");
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-  //   if (user) noReLogin();
-  // });
-
   return user ? (
     <Navigate to="/" />
   ) : (
     <section>
       <h1>Login</h1>
       <form onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="off"
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="pass">Password</label>
-          <input
-            type="password"
-            name="pass"
-            id="pass"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="off"
-          />
-        </fieldset>
+        <InputStringRegister
+          value={email}
+          setValue={setEmail}
+          inputType="email"
+          name="email"
+          label="Email"
+        />
+        <InputStringRegister
+          value={password}
+          setValue={setPassword}
+          inputType="password"
+          name="pass"
+          label="Password"
+        />
 
         <button>Login</button>
         {error ? <p>{error}</p> : null}

@@ -3,3 +3,6 @@ export const dateFormater = (date) => {
   const formatedCurrentDate = `${arrayFormatedDate[0]}`;
   return formatedCurrentDate;
 };
+export const stringDateFormater = (stringDate) => {
+  return stringDate.split("T")[0];
+};

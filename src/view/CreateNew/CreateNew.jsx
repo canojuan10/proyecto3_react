@@ -5,11 +5,10 @@ import { Topics } from "../../components/Topics";
 
 export const CreateNew = () => {
   const { token } = useContext(AuthContext);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [messageConfirm, setMessageConfirm] = useState(null);
-  const [chooseOption, setChooseOption] = useState(""); //quitar al component
+  const [chooseOption, setChooseOption] = useState("");
   const [topic, setTopic] = useState("");
   useEffect(() => {
     setChooseOption(topic);
@@ -26,8 +25,8 @@ export const CreateNew = () => {
         token,
       });
       setMessageConfirm(_new);
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -79,8 +78,8 @@ export const CreateNew = () => {
           <input type="file" name="photo" id="image" accept={"image/*"} />
         </fieldset>
         <button>Send tweet</button>
-        {/* {error ? <p>{error}</p> : null}
-        {loading ? <p>posting tweet...</p> : null} */}
+        {error ? <p>{error}</p> : null}
+        {loading ? <p>posting tweet...</p> : null}
       </form>
     </>
   );

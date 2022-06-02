@@ -35,19 +35,13 @@ export const validateUser = async ({ registrationCode }) => {
 };
 
 export const getNewByIdService = async (idNew) => {
-  const responseNew = await fetch(
+  const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/news/${idNew}`
   );
+  const _new = await response.json();
 
-  const responseImage = await fetch(
-    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`
-  );
-  const { data: dataNew, message: messageNew } = await responseNew.json();
-  const { data: dataImage, message: messageImage } = await responseImage.json();
-
-  if (!responseNew.ok) throw new Error(messageNew);
-  if (!responseImage.ok) throw new Error(messageImage);
-  return { dataNew, dataImage };
+  if (!response.ok) throw new Error(_new.message);
+  return _new.data;
 };
 
 // export const getMyUserService = async (token) => {
@@ -73,6 +67,7 @@ export const logInUserService = async ({ email, password }) => {
 };
 
 export const sendNewService = async ({ data, token }) => {
+  const messageObject = {};
   const responseNew = await fetch(`${process.env.REACT_APP_BACKEND}/new`, {
     method: "POST",
     body: data,
@@ -84,18 +79,24 @@ export const sendNewService = async ({ data, token }) => {
   if (!responseNew.ok) {
     throw new Error(messageNew);
   }
-
-  const responseImage = await fetch(
-    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
-    {
-      method: "POST",
-      body: data,
-      headers: {
-        Authorization: token,
-      },
+  messageObject.messageNew = messageNew;
+  if (data.get("photo").size) {
+    const responseImage = await fetch(
+      `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
+      {
+        method: "POST",
+        body: data,
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    const { message: messageImage } = await responseImage.json();
+    if (!responseImage.ok) {
+      throw new Error(messageImage);
     }
-  );
-  const { message: messageImage } = await responseImage.json();
+    messageObject.messageImage = messageImage;
+  }
 
-  return { messageImage, messageNew };
-};
+  return messageObject;
+}; //Gestionar el error del envio de la imagen

@@ -11,7 +11,7 @@ export const Home = () => {
     <div>
       <Calendar date={date} setDate={setDate} />
       <h1>Latest tweets</h1>
-      <NewsFilter setDate={setDate} setTopic={setTopic} topic={topic} />
+      <NewsFilter setTopic={setTopic} topic={topic} />
       <NewsList news={news} error={error} />
     </div>
   );
