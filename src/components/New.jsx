@@ -10,12 +10,14 @@ import {
 } from "../services";
 
 export const New = ({ _new, deleteNew, isDetail = false }) => {
+
   const navigate = useNavigate();
   const { token, user } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [confirmMessage, setConfirmMessage] = useState("");
 
   const removeNew = async (id) => {
+
     try {
       if (_new.image_id) {
         await deletePhotoService({ id, token, idPhoto: _new.image_id });
@@ -29,6 +31,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
     } catch (error) {
       setError(error.message);
     }
+
   };
 
   const voteNew = async (id) => {
@@ -56,6 +59,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
         />
       ) : null}
 
+
       {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
       {user ? (
         <button
@@ -72,6 +76,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
           <p>{confirmMessage}</p>
         </>
       ) : null}
+
       {user && user.id === _new.user_id ? (
         <section>
           <button
@@ -79,11 +84,21 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
               removeNew(_new.id);
             }}
           >
-            Delete tweet
+
+            Delete new
+          </button>
+          <button
+            onClick={() => {
+              navigate(`/edit/${_new?.id}`);
+            }}
+          >
+            Edit new
+
           </button>
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
+
     </article>
   );
 };
