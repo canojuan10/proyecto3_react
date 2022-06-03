@@ -3,7 +3,7 @@ import { logInUserService } from "../../services";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { InputStringRegister } from "../../components/InputStringRegister";
-
+import { Link } from "react-router-dom";
 export const Login = () => {
   const navigate = useNavigate();
   const { login, setUser, user } = useContext(AuthContext);
@@ -51,6 +51,10 @@ export const Login = () => {
         />
 
         <button>Login</button>
+        <Link to={"/user/recoverypassword"}>
+          Non lembras o teu contrasinal?
+        </Link>
+
         {error ? <p>{error}</p> : null}
       </form>
     </section>

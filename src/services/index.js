@@ -174,3 +174,39 @@ export const getUserByIdService = async (idUser) => {
   if (!response.ok) throw new Error(json.message);
   return json.data;
 };
+
+export const recoveryPassService = async ({ email }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/recoverypassword`,
+    {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
+
+export const resetPassService = async ({ recoverCode, newPassword }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/resetpassword`,
+    {
+      method: "POST",
+      body: JSON.stringify({ recoverCode, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
