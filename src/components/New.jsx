@@ -5,8 +5,7 @@ import { stringDateFormater } from "../helpers/formatDate";
 import { AuthContext } from "../context/AuthContext";
 import { deleteNewService, deletePhotoService } from "../services";
 
-
-export const New = ({ _new, deleteNew, isDetail = false  }) => {
+export const New = ({ _new, deleteNew, isDetail = false }) => {
   const navigate = useNavigate();
   const { token, user } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -26,7 +25,6 @@ export const New = ({ _new, deleteNew, isDetail = false  }) => {
       setError(error.message);
     }
   };
-  console.log(_new, user, token);
 
   return (
     <article className="new">
@@ -44,8 +42,7 @@ export const New = ({ _new, deleteNew, isDetail = false  }) => {
         />
       ) : null}
 
- {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
-     
+      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
 
       {user && user.id === _new.user_id ? (
         <section>
@@ -59,9 +56,6 @@ export const New = ({ _new, deleteNew, isDetail = false  }) => {
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
-
-     
-
     </article>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllNewsService } from "../services/index";
+import { getAllNewsService, getNewsByVotes } from "../services/index";
 import { dateFormater } from "../helpers/formatDate";
 
 export const useNews = () => {
@@ -16,6 +16,7 @@ export const useNews = () => {
         // const data = id
         //   ? await getUserNewsService(id)
         //   : await getAllNewsService();
+
         const data = await getAllNewsService({ date, topic });
 
         setNews(data);

@@ -131,3 +131,14 @@ export const deletePhotoService = async ({ idPhoto, id, token }) => {
     throw new Error(json.message);
   }
 };
+
+export const getNewsByVotes = async ({ date }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/news/votes?modifiedAt=${date}`
+  );
+  const json = await response.json();
+
+  if (!response.ok) throw new Error(json.message);
+
+  return json.data;
+};

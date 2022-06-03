@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-export const NewHighLight = ({ _new, isDetail = false }) => {
+export const NewHighLight = ({ newVotes }) => {
   return (
     <article className="new">
-      <h2>{_new?.title}</h2>
-      <p className="entradilla">{_new?.entradilla}</p>
-      <p className="topic">{_new?.topic}</p>
-      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
+      <h2>{newVotes?.title}</h2>
+      <p className="entradilla">{newVotes?.entradilla}</p>
+      <p className="topic">{newVotes?.topic}</p>
+      <Link to={`/new/${newVotes?.id}`}>+ info</Link>
     </article>
   );
 };
