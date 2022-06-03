@@ -99,7 +99,23 @@ export const sendNewService = async ({ data, token }) => {
   }
 
   return messageObject;
-}; //Gestionar el error del envio de la imagen
+};
+
+export const editNewService = async ({ data, token, idNew }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}`,
+    {
+      method: "PUT",
+      body: data,
+      headers: { Authorization: token },
+    }
+  );
+  const json = response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.data;
+};
 
 export const deleteNewService = async ({ id, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/new/${id}`, {
@@ -113,6 +129,7 @@ export const deleteNewService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  return json;
 };
 
 export const deletePhotoService = async ({ idPhoto, id, token }) => {
@@ -125,9 +142,25 @@ export const deletePhotoService = async ({ idPhoto, id, token }) => {
       },
     }
   );
-  const json = await response.json;
 
+  const json = await response.json();
   if (!response.ok) {
     throw new Error(json.message);
   }
+};
+export const voteNewService = async ({ token, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${id}/vote`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
 };

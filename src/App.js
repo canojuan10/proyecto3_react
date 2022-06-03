@@ -10,6 +10,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ValidationCode } from "./view/ValidationCode/ValidationCode";
 import { CreateNew } from "./view/CreateNew/CreateNew";
+import { EditNew } from "./view/EditNew/EditNew";
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user" element={<UserDetail />}></Route>
         <Route path="/new/:idNew" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/edit/:idNew" element={<EditNew />}></Route>
         <Route path="/createnew" element={<CreateNew />}></Route>
         <Route
           path="/user/validate/:registrationCode"

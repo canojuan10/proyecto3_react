@@ -3,12 +3,17 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { stringDateFormater } from "../helpers/formatDate";
 import { AuthContext } from "../context/AuthContext";
-import { deleteNewService, deletePhotoService } from "../services";
+import {
+  deleteNewService,
+  deletePhotoService,
+  voteNewService,
+} from "../services";
 
 export const New = ({ _new, deleteNew, isDetail = false }) => {
   const navigate = useNavigate();
   const { token, user } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [confirmMessage, setConfirmMessage] = useState("");
 
   const removeNew = async (id) => {
     try {
@@ -21,6 +26,15 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       } else {
         navigate("/");
       }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const voteNew = async (id) => {
+    try {
+      const response = await voteNewService({ id, token });
+      setConfirmMessage(response);
     } catch (error) {
       setError(error.message);
     }
@@ -44,6 +58,23 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
 
       {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
 
+      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
+      {user ? (
+        <button
+          onClick={() => {
+            voteNew(_new.id);
+          }}
+        >
+          vote new
+        </button>
+      ) : null}
+      {error ? <p>{error}</p> : null}
+      {confirmMessage ? (
+        <>
+          <p>{confirmMessage}</p>
+        </>
+      ) : null}
+
       {user && user.id === _new.user_id ? (
         <section>
           <button
@@ -51,7 +82,14 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
               removeNew(_new.id);
             }}
           >
-            Delete tweet
+            Delete new
+          </button>
+          <button
+            onClick={() => {
+              navigate(`/edit/${_new?.id}`);
+            }}
+          >
+            Edit new
           </button>
           {error ? <p>{error}</p> : null}
         </section>

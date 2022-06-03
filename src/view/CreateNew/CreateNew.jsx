@@ -77,10 +77,10 @@ export const CreateNew = () => {
           <label htmlFor="image">Image</label>
           <input type="file" name="photo" id="image" accept={"image/*"} />
         </fieldset>
-        <button>Send tweet</button>
-        {error ? <p>{error}</p> : null}
-        {loading ? <p>posting tweet...</p> : null}
+        <button>Subir noticia</button>
       </form>
+      {error ? <p>{error}</p> : null}
+      {loading ? <p>creando noticia...</p> : null}
     </>
   );
 };
