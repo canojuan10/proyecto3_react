@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Topics } from "./Topics";
 
-export const CreateNewForm = ({
-  handleForm,
-  chooseOption,
-  setTopic,
-  newValue,
-  topic,
-}) => {
+export const CreateNewForm = ({ handleForm, newValue }) => {
   const [title, setTitle] = useState("");
   const [entradilla, setEntradilla] = useState("");
   const [description, setDescription] = useState("");
+  const [topic, setTopic] = useState("");
+  const [chooseOption, setChooseOption] = useState("");
+
+  useEffect(() => {
+    setChooseOption(topic);
+  }, [topic]);
+
   useEffect(() => {
     setDescription(newValue.description);
     setTitle(newValue.title);
@@ -18,7 +19,7 @@ export const CreateNewForm = ({
   }, [newValue.title, newValue.description, newValue.entradilla]);
   useEffect(() => {
     setTopic(newValue.topic);
-  }, [newValue]);
+  }, [newValue.topic]);
   return (
     <form className="createNew" onSubmit={handleForm}>
       <fieldset>
