@@ -99,7 +99,6 @@ export const sendNewService = async ({ data, token }) => {
   }
 
   return messageObject;
-
 };
 
 export const editNewService = async ({ data, token, idNew }) => {
@@ -108,7 +107,14 @@ export const editNewService = async ({ data, token, idNew }) => {
     {
       method: "PUT",
       body: data,
-
+      headers: { Authorization: token },
+    }
+  );
+  const json = response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.data;
 };
 
 export const deleteNewService = async ({ id, token }) => {
