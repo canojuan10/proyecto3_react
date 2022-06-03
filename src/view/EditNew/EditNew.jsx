@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CreateNewForm } from "../../components/CreateNewForm";
 import { AuthContext } from "../../context/AuthContext";
@@ -10,13 +10,8 @@ export const EditNew = () => {
   const { _new, error, loading, setError } = useNew(idNew);
   const { token } = useContext(AuthContext);
   const [messageConfirm, setMessageConfirm] = useState(null);
-  const [chooseOption, setChooseOption] = useState("");
-  const [topic, setTopic] = useState("");
-  const newToEdit = {};
 
-  useEffect(() => {
-    setChooseOption(topic);
-  }, [topic]);
+  const newToEdit = {};
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -54,13 +49,7 @@ export const EditNew = () => {
   ) : (
     <>
       <h1>Añadir noticias</h1>
-      <CreateNewForm
-        newValue={_new}
-        setTopic={setTopic}
-        handleForm={handleForm}
-        chooseOption={chooseOption}
-        topic={topic}
-      />
+      <CreateNewForm newValue={_new} handleForm={handleForm} />
       {error ? <p>{error}</p> : null}
       {loading ? <p>posting tweet...</p> : null}
     </>
