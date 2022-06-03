@@ -34,7 +34,7 @@ export const ListbyVotes = () => {
   return newsVotes.length ? (
     <ul>
       {newsVotes
-        .slice(0)
+        .slice(0, 5)
         .reverse()
         .map((newVotes, index) => {
           return (
