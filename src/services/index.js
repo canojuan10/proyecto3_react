@@ -164,3 +164,13 @@ export const voteNewService = async ({ token, id }) => {
   }
   return json.message;
 };
+
+export const getUserByIdService = async (idUser) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}`
+  );
+  const json = await response.json();
+
+  if (!response.ok) throw new Error(json.message);
+  return json.data;
+};
