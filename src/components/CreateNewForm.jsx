@@ -6,22 +6,19 @@ export const CreateNewForm = ({
   chooseOption,
   setTopic,
   newValue,
+  topic,
 }) => {
   const [title, setTitle] = useState("");
   const [entradilla, setEntradilla] = useState("");
   const [description, setDescription] = useState("");
   useEffect(() => {
-    setTopic(newValue.topic);
     setDescription(newValue.description);
     setTitle(newValue.title);
     setEntradilla(newValue.entradilla);
-  }, [
-    newValue.title,
-    newValue.description,
-    newValue.entradilla,
-    newValue.topic,
-  ]);
-
+  }, [newValue.title, newValue.description, newValue.entradilla]);
+  useEffect(() => {
+    setTopic(newValue.topic);
+  }, [newValue]);
   return (
     <form className="createNew" onSubmit={handleForm}>
       <fieldset>

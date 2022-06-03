@@ -8,6 +8,7 @@ export const useNew = (idNew) => {
   useEffect(() => {
     const load = async () => {
       try {
+        setLoading(true);
         const data = await getNewByIdService(idNew);
         setNew(data);
       } catch (error) {
@@ -18,5 +19,6 @@ export const useNew = (idNew) => {
     };
     load();
   }, [idNew]);
+
   return { _new, error, loading, setError };
 };

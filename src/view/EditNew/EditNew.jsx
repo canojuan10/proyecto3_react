@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CreateNewForm } from "../../components/CreateNewForm";
 import { AuthContext } from "../../context/AuthContext";
 import { useNew } from "../../hooks/useNew";
@@ -12,12 +12,8 @@ export const EditNew = () => {
   const [messageConfirm, setMessageConfirm] = useState(null);
   const [chooseOption, setChooseOption] = useState("");
   const [topic, setTopic] = useState("");
-  const newToEdit = {
-    title: "Un título",
-    description: "una noticia",
-    entradilla: "una entradilla",
-    topic: "galicia",
-  };
+  const newToEdit = {};
+
   useEffect(() => {
     setChooseOption(topic);
   }, [topic]);
@@ -49,11 +45,11 @@ export const EditNew = () => {
       setError(error.message);
     }
   };
-
+  if (loading) return <p>loading</p>;
   return messageConfirm ? (
     <>
-      <p>{messageConfirm.messageNew}</p>
-      <p>{messageConfirm.messageImage}</p>
+      <p>{messageConfirm}</p>
+      <Link to={`/new/${idNew}`}>Volver a la noticia</Link>
     </>
   ) : (
     <>
@@ -63,6 +59,7 @@ export const EditNew = () => {
         setTopic={setTopic}
         handleForm={handleForm}
         chooseOption={chooseOption}
+        topic={topic}
       />
       {error ? <p>{error}</p> : null}
       {loading ? <p>posting tweet...</p> : null}
