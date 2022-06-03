@@ -110,11 +110,11 @@ export const editNewService = async ({ data, token, idNew }) => {
       headers: { Authorization: token },
     }
   );
-  const json = response.json();
+  const json = await response.json();
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json.data;
+  return json.message;
 };
 
 export const deleteNewService = async ({ id, token }) => {
