@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-
+import "./style.css";
 export const InputStringRegister = ({
   value,
   setValue,

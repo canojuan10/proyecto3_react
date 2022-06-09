@@ -11,24 +11,10 @@ export const EditNew = () => {
   const { token } = useContext(AuthContext);
   const [messageConfirm, setMessageConfirm] = useState(null);
 
-  const newToEdit = {};
-
   const handleForm = async (e) => {
     e.preventDefault();
     try {
       const data = new FormData(e.target);
-      if (data.get("title") === newToEdit.entradilla) {
-        data.delete("entradilla");
-      }
-      if (data.get("entradilla") === newToEdit.entradilla) {
-        data.delete("entradilla");
-      }
-      if (data.get("description") === newToEdit.description) {
-        data.delete("description");
-      }
-      if (data.get("topic") === newToEdit.topic) {
-        data.delete("topic");
-      }
 
       const response = await editNewService({
         data,

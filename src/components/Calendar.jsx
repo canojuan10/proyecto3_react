@@ -1,6 +1,6 @@
 import propTypes from "prop-types";
 import { useEffect, useState } from "react";
-
+import "./style.css";
 export const Calendar = ({ date, setDate }) => {
   const [dateInCalendar, setDateInCalendar] = useState("");
   useEffect(() => {

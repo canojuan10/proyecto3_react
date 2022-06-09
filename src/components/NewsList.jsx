@@ -1,4 +1,5 @@
 import { New } from "./New";
+import "./style.css";
 export const NewsList = ({ news, error, deleteNew }) => {
   return news.length ? (
     <ul>

@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700;900&display=swap");
+:root {
+  --main-black-color: #040f0f;
+  --main-orange-color: #d1603d;
+  --main-blue-color: #16697a;
+  --main-white-color: #ffffff;
+
+  --regular-font-size: 18px;
+  --secondary-font-size: 14px;
+  --h3-font-size: 24px;
+  --h2-font-size: 30px;
+  --h1-font-size: 68px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Nunito", sans-serif;
+  font-size: var(--regular-font-size);
+  text-decoration: none;
+}
+img {
+  width: 300px;
+}
+body,
+#root,
+.App {
+  min-height: 100vh;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  color: var(--main-white-color);
+  background-color: var(--main-black-color);
+  height: 150px;
+  margin-bottom: 2rem;
+}
+footer {
+  background-color: var(--main-black-color);
+  color: var(--main-white-color);
+  display: flex;
+  align-items: center;
+  height: 75px;
+  justify-content: space-around;
+}
+h1,
+h1 > a {
+  font-size: var(--h1-font-size);
+  font-weight: 700;
+}
+h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+}
+h3 {
+  font-size: var(--h3-font-size);
+  font-weight: 700;
+}
+a {
+  color: inherit;
+  font-weight: 700;
+}
