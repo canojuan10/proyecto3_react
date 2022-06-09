@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { sendNewService } from "../../services";
 import { Topics } from "../../components/Topics";
-
+import { useNavigate } from "react-router-dom";
+import { Loading, createNewMessage } from "../../components/Loading";
 export const CreateNew = () => {
+  const navigate = useNavigate();
   const { token } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,8 +17,8 @@ export const CreateNew = () => {
   }, [topic]);
   const handleForm = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
       const data = new FormData(e.target);
       if (!data.get("entradilla")) data.delete("entradilla");
 
@@ -28,11 +30,15 @@ export const CreateNew = () => {
     } catch (error) {
       setError(error.message);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
     }
   };
 
-  return messageConfirm ? (
+  return loading ? (
+    <Loading message={createNewMessage} />
+  ) : messageConfirm ? (
     <>
       <p>{messageConfirm.messageNew}</p>
       <p>{messageConfirm.messageImage}</p>
@@ -80,7 +86,6 @@ export const CreateNew = () => {
         <button>Subir noticia</button>
       </form>
       {error ? <p>{error}</p> : null}
-      {loading ? <p>creando noticia...</p> : null}
     </>
   );
 };

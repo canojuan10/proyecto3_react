@@ -13,9 +13,7 @@ export const useNews = () => {
     const loadNews = async () => {
       try {
         setLoading(true);
-        // const data = id
-        //   ? await getUserNewsService(id)
-        //   : await getAllNewsService();
+
         const data = await getAllNewsService({ date, topic });
 
         setNews(data);

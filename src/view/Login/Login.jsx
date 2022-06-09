@@ -3,6 +3,8 @@ import { logInUserService } from "../../services";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { InputStringRegister } from "../../components/InputStringRegister";
+import { Loading, loginMessage } from "../../components/Loading";
+import { Error } from "../../components/Error";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -10,10 +12,11 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleForm = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const { token, userDataPublic } = await logInUserService({
         email,
@@ -23,14 +26,18 @@ export const Login = () => {
       setUser(userDataPublic);
 
       login(bearerToken);
+      setLoading(false);
       navigate("/");
     } catch (error) {
+      setLoading(false);
       setError(error.message);
     }
   };
 
   return user ? (
     <Navigate to="/" />
+  ) : loading ? (
+    <Loading message={loginMessage} />
   ) : (
     <section>
       <h1>Login</h1>
@@ -51,7 +58,7 @@ export const Login = () => {
         />
 
         <button>Login</button>
-        {error ? <p>{error}</p> : null}
+        {error ? <Error message={error} /> : null}
       </form>
     </section>
   );

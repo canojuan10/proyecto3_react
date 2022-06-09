@@ -3,12 +3,13 @@ import { NewsFilter } from "../../components/NewsFilter";
 import { NewsList } from "../../components/NewsList";
 import { Calendar } from "../../components/Calendar";
 import "./style.css";
+import { Loading } from "../../components/Loading";
 
 export const Home = () => {
   const { news, loading, error, setDate, setTopic, topic, date, deleteNew } =
     useNews();
-  if (loading) return <p>Cargando</p>;
-  if (error) console.log(error);
+  if (loading) return <Loading message="Cargando noticias..." />;
+
   return (
     <div>
       <h2>LASTEST NEWS</h2>
