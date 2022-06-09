@@ -1,19 +1,10 @@
 import propTypes from "prop-types";
-
-export const Topics = ({ setValue, value }) => {
+import "./style.css";
+export const Topics = ({ value }) => {
   return (
     <fieldset>
-      <label htmlFor="topic">Tema</label>
-      <select
-        required
-        autoFocus
-        value={value}
-        name="topic"
-        id="topic"
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      >
+      {/* <label htmlFor="topic">Tema</label> */}
+      <select required autoFocus defaultValue={value} name="topic" id="topic">
         <option value="">Todos los temas</option>
         <option value="politica">Política</option>
         <option value="espana">España</option>
@@ -32,5 +23,4 @@ export const Topics = ({ setValue, value }) => {
 
 Topics.propTypes = {
   value: propTypes.string.isRequired,
-  setValue: propTypes.func.isRequired,
 };

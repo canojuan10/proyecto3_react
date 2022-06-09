@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
 import { Topics } from "./Topics";
-
+import "./style.css";
 export const CreateNewForm = ({ handleForm, newValue }) => {
-  const [title, setTitle] = useState("");
-  const [entradilla, setEntradilla] = useState("");
-  const [description, setDescription] = useState("");
-  const [topic, setTopic] = useState("");
-  const [chooseOption, setChooseOption] = useState("");
-
-  useEffect(() => {
-    setChooseOption(topic);
-  }, [topic]);
-
-  useEffect(() => {
-    setDescription(newValue.description);
-    setTitle(newValue.title);
-    setEntradilla(newValue.entradilla);
-  }, [newValue.title, newValue.description, newValue.entradilla]);
-  useEffect(() => {
-    setTopic(newValue.topic);
-  }, [newValue.topic]);
   return (
     <form className="createNew" onSubmit={handleForm}>
       <fieldset>
         <label htmlFor="title">Título</label>
         <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          defaultValue={newValue.title}
           type="text"
           name="title"
           id="title"
@@ -39,20 +19,18 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
       <fieldset>
         <label htmlFor="subtitle">Entradilla</label>
         <textarea
-          value={entradilla}
-          onChange={(e) => setEntradilla(e.target.value)}
+          defaultValue={newValue.entradilla}
           name="entradilla"
           id="subtitle"
           minLength={0}
           maxLength={100}
         ></textarea>
       </fieldset>
-      <Topics value={chooseOption} setValue={setTopic} />
+      <Topics value={newValue.topic} />
       <fieldset>
         <label htmlFor="description">Noticia</label>
         <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          defaultValue={newValue.description}
           name="description"
           id="description"
           minLength={50}
@@ -61,6 +39,13 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
         ></textarea>
       </fieldset>
       <fieldset>
+        {newValue.url ? (
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${newValue.url}`}
+            alt={newValue.title}
+            style={{ width: "100px" }}
+          />
+        ) : null}
         <label htmlFor="image">Image</label>
         <input type="file" name="photo" id="image" accept={"image/*"} />
       </fieldset>

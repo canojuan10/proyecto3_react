@@ -1,8 +1,9 @@
+import "./style.css";
 export const Footer = () => {
   return (
     <footer>
-      <h2>© 2022 HACK A BOSS</h2>
-      <h3>
+      <p>© 2022 HACK A BOSS</p>
+      <p>
         {/* icono linkedin */}
         <a
           href="https://www.linkedin.com/in/juanfernandezmirandacano"
@@ -19,12 +20,14 @@ export const Footer = () => {
         >
           Hugo Suárez
         </a>
-      </h3>
+      </p>
       {/* icono-link HAB */}
       {/* icono-link repositorio Backend */}
-      <p>repositorio backend</p>
+      <div>
+        <p> backend</p>
+        <p> frontend</p>
+      </div>
       {/* icono-link repositorio FrontEnd */}
-      <p>repositorio frontend</p>
     </footer>
   );
 };
