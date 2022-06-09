@@ -4,9 +4,13 @@ import { useUser } from "../../hooks/useUser";
 
 export const UserDetail = () => {
   const { idUser } = useParams();
-  const { userData, loading, error } = useUser(idUser);
+  const { userData, loading, error, removeUser } = useUser(idUser);
 
   return !loading ? (
-    <UserDetailComponent userData={userData} error={error} />
+    <UserDetailComponent
+      userData={userData}
+      removeUser={removeUser}
+      error={error}
+    />
   ) : null;
 };

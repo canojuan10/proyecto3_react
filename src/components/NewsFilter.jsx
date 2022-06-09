@@ -1,7 +1,7 @@
 import propTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Topics } from "../components/Topics";
-
+import "./style.css";
 export const NewsFilter = ({ setTopic, topic }) => {
   const [chooseOption, setChooseOption] = useState("");
   useEffect(() => {
