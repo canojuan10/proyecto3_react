@@ -44,11 +44,6 @@ export const getNewByIdService = async (idNew) => {
   return json.data;
 };
 
-// export const getMyUserService = async (token) => {
-//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
-
-// };
-
 export const logInUserService = async ({ email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
     method: "POST",
@@ -100,6 +95,23 @@ export const sendNewService = async ({ data, token }) => {
 
   return messageObject;
 };
+export const uploadNewPhotoServices = async ({ idNew, data, token }) => {
+  const responseImage = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const { message } = await responseImage.json();
+  if (!responseImage.ok) {
+    throw new Error(message);
+  }
+  return message;
+};
 
 export const editNewService = async ({ data, token, idNew }) => {
   const response = await fetch(
@@ -132,9 +144,9 @@ export const deleteNewService = async ({ id, token }) => {
   return json;
 };
 
-export const deletePhotoService = async ({ idPhoto, id, token }) => {
+export const deletePhotoService = async ({ idPhoto, idNew, token }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/new/${id}/photos/${idPhoto}`,
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photos/${idPhoto}`,
     {
       method: "DELETE",
       headers: {

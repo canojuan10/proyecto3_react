@@ -24,8 +24,21 @@ export const Footer = () => {
       {/* icono-link HAB */}
       {/* icono-link repositorio Backend */}
       <div>
-        <p> backend</p>
-        <p> frontend</p>
+        <a
+          href="https://github.com/wicket-warrick/PROXECTO2_NODE"
+          target="_blank"
+          rel="noreferrer"
+        >
+          BackEnd
+        </a>
+
+        <a
+          href="https://github.com/canojuan10/proyecto3_react"
+          target="_blank"
+          rel="noreferrer"
+        >
+          FrontEnd
+        </a>
       </div>
       {/* icono-link repositorio FrontEnd */}
     </footer>
