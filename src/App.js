@@ -11,6 +11,7 @@ import { Footer } from "./components/Footer";
 import { ValidationCode } from "./view/ValidationCode/ValidationCode";
 import { CreateNew } from "./view/CreateNew/CreateNew";
 import { EditNew } from "./view/EditNew/EditNew";
+import { RecoveryPassword } from "./view/RecoveryPassword/RecoveryPassword";
 import { EditUser } from "./view/EditUser/EditUser";
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
         <Route
           path="/user/validate/:registrationCode"
           element={<ValidationCode />}
+        ></Route>
+        <Route
+          path="/user/recoverypassword"
+          element={<RecoveryPassword />}
         ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

@@ -187,6 +187,24 @@ export const getUserByIdService = async (idUser) => {
   return json.data;
 };
 
+
+export const recoveryPassService = async ({ email }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/recoverypassword`,
+    {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
 export const deleteUserService = async ({ idUser, token }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/user/${idUser}`,
@@ -220,8 +238,25 @@ export const uploadAvatarService = async ({ data, token, id }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  return json.message;
+};
 
-  return json;
+export const resetPassService = async ({ recoverCode, newPassword }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/resetpassword`,
+    {
+      method: "POST",
+      body: JSON.stringify({ recoverCode, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
 };
 
 export const deleteAvatarService = async ({ idAvatar, id, token }) => {
