@@ -59,9 +59,7 @@ export const Login = () => {
 
         <button>Login</button>
 
-        <Link to={"/user/recoverypassword"}>
-          Non lembras o teu contrasinal?
-        </Link>
+        <Link to={"/user/recoverypassword"}>¿No recuerdas tu contraseña?</Link>
         {error ? <Error message={error} /> : null}
       </form>
     </section>

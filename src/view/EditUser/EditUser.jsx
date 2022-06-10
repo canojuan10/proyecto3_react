@@ -75,7 +75,7 @@ export const EditUser = () => {
           name="bio"
           label="Biografía: "
         />
-        <button>Edit usuario</button>
+        <button>Editar usuario</button>
         {error ? <Error message={error} /> : null}
       </form>
     </>

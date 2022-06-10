@@ -19,7 +19,7 @@ export const NewsList = ({ news, error, deleteNew }) => {
   ) : error ? (
     <Error message={errorFetchMessage} />
   ) : (
-    <p>no hay noticias sobre el tema</p>
+    <p>No hay noticias sobre el tema</p>
   );
 };
 NewsList.propTypes = {

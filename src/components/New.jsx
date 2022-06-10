@@ -50,10 +50,14 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
         <h3>{_new?.title}</h3>
         <p className="entradilla">{_new?.entradilla}</p>
         {isDetail ? <p className="description">{_new?.description}</p> : null}
-        <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+        {_new.votes ? <p className="votes">Votos: {_new.votes}</p> : null}
+        {_new.createdAt ? (
+          <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+        ) : null}
         <p className="topic">{_new?.topic}</p>
-        <p className="author">{_new?.name}</p>
-        <Link to={`/user/${_new?.user_id}`}>Ver perfil autor</Link>
+        <Link className="author" to={`/user/${_new?.user_id}`}>
+          {_new?.name}
+        </Link>
 
         {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
         {user ? (
@@ -62,7 +66,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
               voteNew(_new.id);
             }}
           >
-            vote new
+            Votar
           </button>
         ) : null}
       </div>
@@ -88,14 +92,14 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
               removeNew(_new.id);
             }}
           >
-            Delete new
+            Borrar Noticia
           </button>
           <button
             onClick={() => {
               navigate(`/edit/${_new?.id}`);
             }}
           >
-            Edit new
+            Editar Noticia
           </button>
           {error ? <p>{error}</p> : null}
         </section>

@@ -66,7 +66,7 @@ export const EditNew = () => {
     </>
   ) : (
     <>
-      <h1>Añadir noticias</h1>
+      <h1>Editar Noticia</h1>
       <CreateNewForm newValue={_new} handleForm={handleForm} />
       {error ? <Error message={error} /> : null}
     </>

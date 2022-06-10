@@ -85,7 +85,7 @@ export const CreateNew = () => {
           ></textarea>
         </fieldset>
         <fieldset>
-          <label htmlFor="image">Image</label>
+          <label htmlFor="image">Imagen</label>
           <input type="file" name="photo" id="image" accept={"image/*"} />
         </fieldset>
         <button>Subir noticia</button>
