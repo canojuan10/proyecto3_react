@@ -3,12 +3,13 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { stringDateFormater } from "../helpers/formatDate";
 import { AuthContext } from "../context/AuthContext";
+
 import {
   deleteNewService,
   deletePhotoService,
   voteNewService,
 } from "../services";
-
+import "./style.css";
 export const New = ({ _new, deleteNew, isDetail = false }) => {
   const navigate = useNavigate();
   const { token, user } = useContext(AuthContext);
@@ -35,6 +36,9 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
     try {
       const response = await voteNewService({ id, token });
       setConfirmMessage(response);
+      setTimeout(() => {
+        setConfirmMessage("");
+      }, 2000);
     } catch (error) {
       setError(error.message);
     }
@@ -42,12 +46,26 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
 
   return (
     <article className="new">
-      <h2>{_new?.title}</h2>
-      <p className="entradilla">{_new?.entradilla}</p>
-      {isDetail ? <p className="description">{_new?.description}</p> : null}
-      <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
-      <p className="topic">{_new?.topic}</p>
-      <p className="author">{_new?.name}</p>
+      <div>
+        <h3>{_new?.title}</h3>
+        <p className="entradilla">{_new?.entradilla}</p>
+        {isDetail ? <p className="description">{_new?.description}</p> : null}
+        <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+        <p className="topic">{_new?.topic}</p>
+        <p className="author">{_new?.name}</p>
+        <Link to={`/user/${_new?.user_id}`}>Ver perfil autor</Link>
+
+        {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
+        {user ? (
+          <button
+            onClick={() => {
+              voteNew(_new.id);
+            }}
+          >
+            vote new
+          </button>
+        ) : null}
+      </div>
 
       {_new?.url ? (
         <img
@@ -56,18 +74,6 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
         />
       ) : null}
 
-      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
-
-      {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
-      {user ? (
-        <button
-          onClick={() => {
-            voteNew(_new.id);
-          }}
-        >
-          vote new
-        </button>
-      ) : null}
       {error ? <p>{error}</p> : null}
       {confirmMessage ? (
         <>
@@ -100,4 +106,6 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
 
 New.propTypes = {
   _new: propTypes.object.isRequired,
+  deleteNew: propTypes.func,
+  isDetail: propTypes.bool,
 };

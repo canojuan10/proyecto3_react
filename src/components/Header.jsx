@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { UserManagment } from "./UserManagment";
-
+import "./style.css";
 export const Header = () => {
   return (
     <header>
