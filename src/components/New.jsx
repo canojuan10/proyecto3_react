@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { stringDateFormater } from "../helpers/formatDate";
 import { AuthContext } from "../context/AuthContext";
+
 import {
   deleteNewService,
   deletePhotoService,
@@ -30,6 +31,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       setError(error.message);
     }
   };
+
   const voteNew = async (id) => {
     try {
       const response = await voteNewService({ id, token });

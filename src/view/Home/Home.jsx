@@ -2,9 +2,9 @@ import useNews from "../../hooks/useNews";
 import { NewsFilter } from "../../components/NewsFilter";
 import { NewsList } from "../../components/NewsList";
 import { Calendar } from "../../components/Calendar";
+import { ListbyVotes } from "../../components/NewsListbyVotes";
 import "./style.css";
 import { Loading } from "../../components/Loading";
-
 export const Home = () => {
   const { news, loading, error, setDate, setTopic, topic, date, deleteNew } =
     useNews();
@@ -18,6 +18,7 @@ export const Home = () => {
         <NewsFilter setTopic={setTopic} topic={topic} />
       </div>
       <NewsList news={news} error={error} deleteNew={deleteNew} />
+      <ListbyVotes />
     </div>
   );
 };
