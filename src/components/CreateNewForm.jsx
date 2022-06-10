@@ -1,5 +1,6 @@
 import { Topics } from "./Topics";
 import "./style.css";
+import propTypes from "prop-types";
 export const CreateNewForm = ({ handleForm, newValue }) => {
   return (
     <form className="createNew" onSubmit={handleForm}>
@@ -52,4 +53,8 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
       <button>Subir noticia</button>
     </form>
   );
+};
+CreateNewForm.propTypes = {
+  newValue: propTypes.object.isRequired,
+  handleForm: propTypes.func.isRequired,
 };

@@ -1,4 +1,5 @@
 import { New } from "./New";
+import propTypes from "prop-types";
 import { Error, errorFetchMessage } from "./Error";
 import "./style.css";
 export const NewsList = ({ news, error, deleteNew }) => {
@@ -20,4 +21,9 @@ export const NewsList = ({ news, error, deleteNew }) => {
   ) : (
     <p>no hay noticias sobre el tema</p>
   );
+};
+NewsList.propTypes = {
+  news: propTypes.array.isRequired,
+  deleteNew: propTypes.func.isRequired,
+  error: propTypes.string.isRequired,
 };

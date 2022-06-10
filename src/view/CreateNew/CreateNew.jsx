@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { sendNewService } from "../../services";
 import { Topics } from "../../components/Topics";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loading, createNewMessage } from "../../components/Loading";
 export const CreateNew = () => {
   const navigate = useNavigate();
@@ -30,9 +30,7 @@ export const CreateNew = () => {
     } catch (error) {
       setError(error.message);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      setLoading(false);
     }
   };
 
@@ -42,6 +40,13 @@ export const CreateNew = () => {
     <>
       <p>{messageConfirm.messageNew}</p>
       <p>{messageConfirm.messageImage}</p>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Volver a inicio
+      </button>
     </>
   ) : (
     <>

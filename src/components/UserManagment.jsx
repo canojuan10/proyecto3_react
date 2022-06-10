@@ -16,7 +16,6 @@ export const UserManagment = () => {
         <button onClick={() => logout()}>Logout</button>
         <button
           onClick={() => {
-            console.log("ola");
             navigate("/createnew");
           }}
         >

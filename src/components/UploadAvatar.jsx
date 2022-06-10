@@ -1,8 +1,22 @@
-import { useState } from "react";
-import { deleteAvatarService, uploadAvatarService } from "../services";
+import { useContext, useState } from "react";
+import propTypes from "prop-types";
+import {
+  deleteAvatarService,
+  getUserByIdService,
+  uploadAvatarService,
+} from "../services";
 import "./style.css";
+import { Loading, editUserMessage } from "./Loading";
+import { errorFetchMessage, Error } from "./Error";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
   const [messageConfirm, setMessageConfirm] = useState("");
+  const [error, setError] = useState("");
+  const { idUser } = useParams();
+  const { setUser } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -13,16 +27,23 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
       const data = new FormData(e.target);
       if (data) {
         const response = await uploadAvatarService({ id, data, token });
-        console.log(data);
         setMessageConfirm(response.data.message);
-        setUrl(response.data.url);
         setEdited(false);
       }
     } catch (error) {
-      console.error(error);
+      setError(errorFetchMessage);
+    } finally {
+      const editedUser = await getUserByIdService(idUser);
+      setUser(editedUser);
+      setUrl(editedUser.url);
+      setLoading(false);
     }
   };
-  return (
+  return loading ? (
+    <Loading message={editUserMessage} />
+  ) : error ? (
+    <Error message={error} />
+  ) : (
     <>
       <h1>Editar Avatar</h1>
       <form className="createNew" onSubmit={handleForm}>
@@ -42,4 +63,11 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
       {messageConfirm ? <p>{messageConfirm}</p> : null}
     </>
   );
+};
+UploadAvatar.propTypes = {
+  token: propTypes.string.isRequired,
+  id: propTypes.number.isRequired,
+  userData: propTypes.object.isRequired,
+  setUrl: propTypes.func.isRequired,
+  setEdited: propTypes.func.isRequired,
 };

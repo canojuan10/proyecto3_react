@@ -30,11 +30,13 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       setError(error.message);
     }
   };
-
   const voteNew = async (id) => {
     try {
       const response = await voteNewService({ id, token });
       setConfirmMessage(response);
+      setTimeout(() => {
+        setConfirmMessage("");
+      }, 2000);
     } catch (error) {
       setError(error.message);
     }
@@ -49,6 +51,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
         <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
         <p className="topic">{_new?.topic}</p>
         <p className="author">{_new?.name}</p>
+        <Link to={`/user/${_new?.user_id}`}>Ver perfil autor</Link>
 
         {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
         {user ? (
@@ -101,4 +104,6 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
 
 New.propTypes = {
   _new: propTypes.object.isRequired,
+  deleteNew: propTypes.func,
+  isDetail: propTypes.bool,
 };

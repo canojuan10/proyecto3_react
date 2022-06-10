@@ -6,16 +6,12 @@ import { useUser } from "../../hooks/useUser";
 
 export const UserDetail = () => {
   const { idUser } = useParams();
-  const { userData, loading, error, removeUser } = useUser(idUser);
+  const { userData, loading, error } = useUser(idUser);
 
   return error ? (
     <Error message={error} />
   ) : !loading ? (
-    <UserDetailComponent
-      userData={userData}
-      removeUser={removeUser}
-      //error={error}
-    />
+    <UserDetailComponent userData={userData} error={error} />
   ) : (
     <Loading message={loginMessage} />
   );

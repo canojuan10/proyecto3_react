@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Error } from "../../components/Error";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { InputTextArea } from "../../components/InputTextArea";
@@ -43,6 +43,7 @@ export const Register = () => {
   ) : infoMessage ? (
     <div>
       <p>{infoMessage}</p>
+      <Link to="/">Volver al inicio</Link>
     </div>
   ) : (
     <section>
