@@ -11,6 +11,7 @@ export const useNew = (idNew) => {
         setLoading(true);
         const data = await getNewByIdService(idNew);
         setNew(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {

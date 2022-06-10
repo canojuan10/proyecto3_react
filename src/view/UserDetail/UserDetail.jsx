@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom";
+import { Error } from "../../components/Error";
+import { Loading, loginMessage } from "../../components/Loading";
 import { UserDetailComponent } from "../../components/UserDetailComponent";
 import { useUser } from "../../hooks/useUser";
 
 export const UserDetail = () => {
   const { idUser } = useParams();
-  const { userData, loading, error, removeUser } = useUser(idUser);
+  const { userData, loading, error } = useUser(idUser);
 
-  return !loading ? (
-    <UserDetailComponent
-      userData={userData}
-      removeUser={removeUser}
-      error={error}
-    />
-  ) : null;
+  return error ? (
+    <Error message={error} />
+  ) : !loading ? (
+    <UserDetailComponent userData={userData} error={error} />
+  ) : (
+    <Loading message={loginMessage} />
+  );
 };

@@ -1,27 +1,35 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import propTypes from "prop-types";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { stringDateFormater } from "../helpers/formatDate";
 import { deleteUserService } from "../services";
 import { UploadAvatar } from "./UploadAvatar";
 import "./style.css";
+import { Error } from "./Error";
+import { Loading, loginMessage, deleteUserMessage } from "./Loading";
 export const UserDetailComponent = ({ userData, error }) => {
   const navigate = useNavigate();
   const [edited, setEdited] = useState(false);
   const { logout } = useContext(AuthContext);
   const { user, token, setError } = useContext(AuthContext);
   const [url, setUrl] = useState(userData.url);
-
+  const [loadingSendForm, setLoadingSendForm] = useState(false);
   const removeUser = async (idUser, token) => {
+    setLoadingSendForm(true);
     try {
       await deleteUserService({ idUser, token });
       logout();
+      setLoadingSendForm(false);
       navigate("/");
     } catch (error) {
+      setLoadingSendForm(false);
       setError(error.message);
     }
   };
-  return (
+  return loadingSendForm ? (
+    <Loading message={deleteUserMessage} />
+  ) : (
     <article className="user">
       <h2>{userData?.name}</h2>
       <p className="bio">{userData?.bio}</p>
@@ -51,8 +59,14 @@ export const UserDetailComponent = ({ userData, error }) => {
           >
             Delete user
           </button>
-          <button onClick={() => {}}>Edit user</button>
-          {error ? <p>{error}</p> : null}
+          <button
+            onClick={() => {
+              navigate(`/user/${user.id}/edit`);
+            }}
+          >
+            Edit user
+          </button>
+          {error ? <Error message={error} /> : null}
         </section>
       ) : null}
       {edited ? (
@@ -64,6 +78,12 @@ export const UserDetailComponent = ({ userData, error }) => {
           setUrl={setUrl}
         />
       ) : null}
+      <Link to="/">Volver al inicio</Link>
     </article>
   );
+};
+
+UserDetailComponent.propTypes = {
+  error: propTypes.string.isRequired,
+  userData: propTypes.object.isRequired,
 };

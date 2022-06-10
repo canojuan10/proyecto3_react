@@ -240,3 +240,23 @@ export const deleteAvatarService = async ({ idAvatar, id, token }) => {
     throw new Error(json.message);
   }
 };
+
+export const editUserService = async ({ token, idUser, name, email, bio }) => {
+  console.log(JSON.stringify({ name, email, bio }));
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ name, email, bio }),
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json;
+};
