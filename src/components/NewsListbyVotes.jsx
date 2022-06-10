@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import { dateFormater } from "../helpers/formatDate";
 import { getNewsByVotes } from "../services";
-import { NewHighLight } from "./NewHighLights";
+import { Loading, loadResultsMessage } from "./Loading";
+import { New } from "./New";
 
 export const ListbyVotes = () => {
   const [newsVotes, setNewsVotes] = useState([]);
@@ -14,8 +15,8 @@ export const ListbyVotes = () => {
     const loadNewsByVotes = async () => {
       try {
         setLoading(true);
-
         const data = await getNewsByVotes({ date });
+        console.log(data);
 
         setNewsVotes(data);
       } catch (error) {
@@ -28,18 +29,17 @@ export const ListbyVotes = () => {
     loadNewsByVotes();
   }, [date]);
 
-  return newsVotes.length ? (
-    <ul>
-      {newsVotes
-        .slice(0, 5)
-        .reverse()
-        .map((newVotes, index) => {
-          return (
-            <li key={index}>
-              <NewHighLight newVotes={newVotes} />
-            </li>
-          );
-        })}
+  return loading ? (
+    <Loading message={loadResultsMessage} />
+  ) : newsVotes.length ? (
+    <ul className="list-by-votes">
+      {newsVotes.slice(0, 5).map((newVotes, index) => {
+        return (
+          <li key={index}>
+            <New _new={newVotes} />
+          </li>
+        );
+      })}
     </ul>
   ) : error ? (
     <h2>Problemas de conexión con el servidor</h2>

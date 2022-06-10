@@ -50,7 +50,10 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
         <h3>{_new?.title}</h3>
         <p className="entradilla">{_new?.entradilla}</p>
         {isDetail ? <p className="description">{_new?.description}</p> : null}
-        <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+        {_new.votes ? <p className="votes">Votos: {_new.votes}</p> : null}
+        {_new.createdAt ? (
+          <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+        ) : null}
         <p className="topic">{_new?.topic}</p>
         <Link className="author" to={`/user/${_new?.user_id}`}>
           {_new?.name}
