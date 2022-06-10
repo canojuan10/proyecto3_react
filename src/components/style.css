@@ -1,0 +1,52 @@
+:root {
+  --main-black-color: #040f0f;
+  --main-orange-color: #d1603d;
+  --main-blue-color: #16697a;
+  --main-white-color: #ffffff;
+
+  --regular-font-size: 18px;
+  --secondary-font-size: 14px;
+  --h3-font-size: 24px;
+  --h2-font-size: 30px;
+  --h1-font-size: 68px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header > h1 {
+  margin: 1rem;
+  margin-left: 4rem;
+}
+header > nav section {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header > nav > section div button {
+  margin: 0.5rem;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  color: white;
+}
+
+.new {
+  border: 2px solid var(--main-orange-color);
+  padding: 0.5rem;
+  margin-bottom: 3rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.new div {
+  flex-direction: column;
+}
+.new img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+}

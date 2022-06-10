@@ -44,11 +44,6 @@ export const getNewByIdService = async (idNew) => {
   return json.data;
 };
 
-// export const getMyUserService = async (token) => {
-//   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`);
-
-// };
-
 export const logInUserService = async ({ email, password }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
     method: "POST",
@@ -99,7 +94,40 @@ export const sendNewService = async ({ data, token }) => {
   }
 
   return messageObject;
-}; //Gestionar el error del envio de la imagen
+};
+export const uploadNewPhotoServices = async ({ idNew, data, token }) => {
+  const responseImage = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photo`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const { message } = await responseImage.json();
+  if (!responseImage.ok) {
+    throw new Error(message);
+  }
+  return message;
+};
+
+export const editNewService = async ({ data, token, idNew }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}`,
+    {
+      method: "PUT",
+      body: data,
+      headers: { Authorization: token },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
 
 export const deleteNewService = async ({ id, token }) => {
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/new/${id}`, {
@@ -113,11 +141,55 @@ export const deleteNewService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  return json;
 };
 
-export const deletePhotoService = async ({ idPhoto, id, token }) => {
+export const deletePhotoService = async ({ idPhoto, idNew, token }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/new/${id}/photos/${idPhoto}`,
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}/photos/${idPhoto}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+export const voteNewService = async ({ token, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${id}/vote`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};
+
+export const getUserByIdService = async (idUser) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}`
+  );
+  const json = await response.json();
+
+  if (!response.ok) throw new Error(json.message);
+  return json.data;
+};
+
+export const deleteUserService = async ({ idUser, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}`,
     {
       method: "DELETE",
       headers: {
@@ -130,6 +202,63 @@ export const deletePhotoService = async ({ idPhoto, id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  return json;
+};
+
+export const uploadAvatarService = async ({ data, token, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${id}/avatar`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json;
+};
+
+export const deleteAvatarService = async ({ idAvatar, id, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${id}/avatar/${idAvatar}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const editUserService = async ({ token, idUser, name, email, bio }) => {
+  console.log(JSON.stringify({ name, email, bio }));
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ name, email, bio }),
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json;
 };
 
 export const getNewsByVotes = async ({ date }) => {
