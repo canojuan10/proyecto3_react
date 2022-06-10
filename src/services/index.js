@@ -129,13 +129,16 @@ export const editNewService = async ({ data, token, idNew }) => {
   return json.message;
 };
 
-export const deleteNewService = async ({ id, token }) => {
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/new/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: token,
-    },
-  });
+export const deleteNewService = async ({ idNew, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/new/${idNew}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
   const json = await response.json;
 
   if (!response.ok) {
@@ -186,7 +189,6 @@ export const getUserByIdService = async (idUser) => {
   if (!response.ok) throw new Error(json.message);
   return json.data;
 };
-
 
 export const recoveryPassService = async ({ email }) => {
   const response = await fetch(

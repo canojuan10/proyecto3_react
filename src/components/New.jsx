@@ -16,14 +16,14 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
   const [error, setError] = useState("");
   const [confirmMessage, setConfirmMessage] = useState("");
 
-  const removeNew = async (id) => {
+  const removeNew = async (idNew) => {
     try {
       if (_new.image_id) {
-        await deletePhotoService({ id, token, idPhoto: _new.image_id });
+        await deletePhotoService({ idNew, token, idPhoto: _new.image_id });
       }
-      await deleteNewService({ id, token });
+      await deleteNewService({ idNew, token });
       if (deleteNew) {
-        deleteNew(id);
+        deleteNew(idNew);
       } else {
         navigate("/");
       }
