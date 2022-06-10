@@ -14,9 +14,6 @@ export const ListbyVotes = () => {
     const loadNewsByVotes = async () => {
       try {
         setLoading(true);
-        // const data = id
-        //   ? await getUserNewsService(id)
-        //   : await getAllNewsService();
 
         const data = await getNewsByVotes({ date });
 
@@ -45,8 +42,8 @@ export const ListbyVotes = () => {
         })}
     </ul>
   ) : error ? (
-    <h2>problemas de conexión con el servidor</h2>
+    <h2>Problemas de conexión con el servidor</h2>
   ) : (
-    <p>no hay noticias sobre el tema</p>
+    <p>No hay noticias sobre el tema</p>
   );
 };

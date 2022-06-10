@@ -12,7 +12,7 @@ export const Home = () => {
 
   return (
     <div>
-      <h2>LASTEST NEWS</h2>
+      <h2>ÚLTIMAS NOTICIAS</h2>
       <div>
         <Calendar date={date} setDate={setDate} />
         <NewsFilter setTopic={setTopic} topic={topic} />

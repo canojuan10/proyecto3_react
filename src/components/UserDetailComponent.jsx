@@ -50,21 +50,21 @@ export const UserDetailComponent = ({ userData, error }) => {
               setEdited(true);
             }}
           >
-            Edit Avatar
+            Editar Avatar
           </button>
           <button
             onClick={(e) => {
               removeUser(userData.id, token);
             }}
           >
-            Delete user
+            Borrar Usuario
           </button>
           <button
             onClick={() => {
               navigate(`/user/${user.id}/edit`);
             }}
           >
-            Edit user
+            Editar Usuario
           </button>
           {error ? <Error message={error} /> : null}
         </section>

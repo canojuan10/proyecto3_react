@@ -48,7 +48,7 @@ export const RecoveryPassword = () => {
         name="email"
         label="Email: "
       />
-      <button>Recover Code</button>
+      <button>Código de recuperación</button>
     </form>
   ) : !reset ? (
     <>
@@ -69,7 +69,7 @@ export const RecoveryPassword = () => {
           name="New password"
           label="New Password: "
         />
-        <button>Reset Password</button>
+        <button>Resetear Contraseña</button>
       </form>
     </>
   ) : (

@@ -3,7 +3,6 @@ import "./style.css";
 export const Topics = ({ value }) => {
   return (
     <fieldset>
-      {/* <label htmlFor="topic">Tema</label> */}
       <select required autoFocus defaultValue={value} name="topic" id="topic">
         <option value="">Todos los temas</option>
         <option value="politica">Política</option>

@@ -55,7 +55,7 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
               style={{ width: "75px" }}
             />
           ) : null}
-          <label htmlFor="image">Image</label>
+          <label htmlFor="image">Imagen</label>
           <input type="file" name="photo" id="image" accept={"image/*"} />
         </fieldset>
         <button>Subir Avatar</button>

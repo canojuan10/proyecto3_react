@@ -47,10 +47,10 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
             style={{ width: "100px" }}
           />
         ) : null}
-        <label htmlFor="image">Image</label>
+        <label htmlFor="image">Imagen</label>
         <input type="file" name="photo" id="image" accept={"image/*"} />
       </fieldset>
-      <button>Subir noticia</button>
+      <button>Editar Noticia</button>
     </form>
   );
 };
