@@ -32,15 +32,18 @@ export const ListbyVotes = () => {
   return loading ? (
     <Loading message={loadResultsMessage} />
   ) : newsVotes.length ? (
-    <ul className="list-by-votes">
-      {newsVotes.slice(0, 5).map((newVotes, index) => {
-        return (
-          <li key={index}>
-            <New _new={newVotes} />
-          </li>
-        );
-      })}
-    </ul>
+    <div className="list-by-votes">
+      <h3>NOTICIAS MEJOR VALORADAS</h3>
+      <ul>
+        {newsVotes.slice(0, 5).map((newVotes, index) => {
+          return (
+            <li key={index}>
+              <New _new={newVotes} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   ) : error ? (
     <h2>Problemas de conexión con el servidor</h2>
   ) : (

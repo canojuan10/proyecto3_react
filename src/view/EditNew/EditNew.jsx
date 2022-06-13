@@ -14,6 +14,7 @@ import {
   editNewService,
   uploadNewPhotoServices,
 } from "../../services";
+import "./style.css";
 
 export const EditNew = () => {
   const { idNew } = useParams();
@@ -65,10 +66,10 @@ export const EditNew = () => {
       <Link to={`/new/${idNew}`}>Volver a la noticia</Link>
     </>
   ) : (
-    <>
-      <h1>Editar Noticia</h1>
+    <div className="editNew">
+      <h2>Editar Noticia</h2>
       <CreateNewForm newValue={_new} handleForm={handleForm} />
       {error ? <Error message={error} /> : null}
-    </>
+    </div>
   );
 };

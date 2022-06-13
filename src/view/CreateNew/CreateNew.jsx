@@ -4,6 +4,8 @@ import { sendNewService } from "../../services";
 import { Topics } from "../../components/Topics";
 import { Link, useNavigate } from "react-router-dom";
 import { Loading, createNewMessage } from "../../components/Loading";
+import "./style.css";
+
 export const CreateNew = () => {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
@@ -49,9 +51,9 @@ export const CreateNew = () => {
       </button>
     </>
   ) : (
-    <>
-      <h1>Añadir noticias</h1>
-      <form className="createNew" onSubmit={handleForm}>
+    <div className="createNew">
+      <h2>Añadir noticias</h2>
+      <form className="createNewForm" onSubmit={handleForm}>
         <fieldset>
           <label htmlFor="title">Título</label>
           <input
@@ -73,7 +75,7 @@ export const CreateNew = () => {
             maxLength={100}
           ></textarea>
         </fieldset>
-        <Topics value={chooseOption} setValue={setTopic} />
+        <Topics value={chooseOption} setValue={setTopic} inForm={true} />
         <fieldset>
           <label htmlFor="description">Noticia</label>
           <textarea
@@ -91,6 +93,6 @@ export const CreateNew = () => {
         <button>Subir noticia</button>
       </form>
       {error ? <p>{error}</p> : null}
-    </>
+    </div>
   );
 };
