@@ -37,6 +37,9 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       setConfirmMessage(response);
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
   };
 
