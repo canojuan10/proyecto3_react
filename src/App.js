@@ -12,6 +12,7 @@ import { ValidationCode } from "./view/ValidationCode/ValidationCode";
 import { CreateNew } from "./view/CreateNew/CreateNew";
 import { EditNew } from "./view/EditNew/EditNew";
 import { RecoveryPassword } from "./view/RecoveryPassword/RecoveryPassword";
+import { EditUser } from "./view/EditUser/EditUser";
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/user/:idUser" element={<UserDetail />}></Route>
+        <Route path="/user/:idUser/edit" element={<EditUser />}></Route>
         <Route path="/new/:idNew" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/edit/:idNew" element={<EditNew />}></Route>
