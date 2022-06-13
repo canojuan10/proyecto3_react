@@ -41,6 +41,9 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       }, 2000);
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 2000);
     }
   };
 
