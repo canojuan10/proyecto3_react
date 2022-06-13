@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { editPassword } from "../../services";
 import { InputStringRegister } from "../../components/InputStringRegister";
 
-import { Error, errorPasswordMessage } from "../../components/Error";
+import { Error, errorEditPasswordMessage } from "../../components/Error";
 
 export const EditPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -15,12 +15,18 @@ export const EditPassword = () => {
   const [message, SetMessage] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const navigate = useNavigate();
+  console.log(newPassword, repeatPassword);
 
   const handleForm = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
+      if (repeatPassword !== newPassword) {
+        throw new Error();
+      }
       const response = await editPassword({
         currentPassword,
         newPassword,
@@ -31,7 +37,7 @@ export const EditPassword = () => {
       SetMessage(response.message);
     } catch (error) {
       setLoading(false);
-      setError(errorPasswordMessage);
+      setError(errorEditPasswordMessage);
     }
   };
   return loading ? (
@@ -64,6 +70,13 @@ export const EditPassword = () => {
           inputType="password"
           name="newPassword"
           label="Nuevo password:"
+        />
+        <InputStringRegister
+          value={repeatPassword}
+          setValue={setRepeatPassword}
+          inputType="password"
+          name="repeatPassword"
+          label="Repite password:"
         />
 
         <button>Actualizar Password</button>
