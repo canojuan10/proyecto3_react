@@ -10,6 +10,7 @@ export const Error = ({ message }) => {
     </>
   );
 };
+export const errorPasswordMessage = "Password incorrecto.";
 export const errorFetchMessage = "Error de conexión con el servidor.";
 Error.propTypes = {
   message: propTypes.string.isRequired,

@@ -66,6 +66,14 @@ export const UserDetailComponent = ({ userData, error }) => {
           >
             Editar Usuario
           </button>
+          <button
+            onClick={() => {
+              navigate(`/user/${user.id}/password`);
+            }}
+          >
+            Edita Password
+          </button>
+
           {error ? <Error message={error} /> : null}
         </section>
       ) : null}
