@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Error } from "../../components/Error";
 import { Loading } from "../../components/Loading";
 import { validateUser } from "../../services";
-
+import "./style.css";
 export const ValidationCode = () => {
   const { registrationCode } = useParams();
   const [validateMessage, setValidateMessage] = useState("");
@@ -24,13 +24,13 @@ export const ValidationCode = () => {
   }, [registrationCode, navigate]);
 
   return (
-    <section>
+    <section className="validation">
       {error ? (
         <>
           <Error message={error} />
         </>
       ) : (
-        <p>{validateMessage}</p>
+        <h3>{validateMessage}</h3>
       )}
       <button
         onClick={() => {

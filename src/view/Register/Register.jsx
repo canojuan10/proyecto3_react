@@ -6,6 +6,7 @@ import { InputTextArea } from "../../components/InputTextArea";
 import { Loading, sendFormMessage } from "../../components/Loading";
 import { AuthContext } from "../../context/AuthContext";
 import { createUserService } from "../../services";
+import "./style.css";
 
 export const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -42,19 +43,20 @@ export const Register = () => {
     <Loading message={sendFormMessage} />
   ) : infoMessage ? (
     <div>
-      <p>{infoMessage}</p>
+      <h3>{infoMessage}</h3>
       <Link to="/">Volver al inicio</Link>
     </div>
   ) : (
-    <section>
-      <h1>Formulario Creación de usuario</h1>
-      <form onSubmit={handleForm}>
+    <section className="register">
+      <h2>Registro de usuario</h2>
+      <form className="registerForm" onSubmit={handleForm}>
         <InputStringRegister
           value={name}
           setValue={setName}
           inputType="text"
           name="name"
           label="Nombre de usuario: "
+          placeholder="Como te harás llamar..."
         />
         <InputStringRegister
           value={password}
@@ -62,6 +64,7 @@ export const Register = () => {
           inputType="password"
           name="password"
           label="Password: "
+          placeholder="Contraseña de la cuenta..."
         />
         <InputStringRegister
           value={email}
@@ -69,12 +72,14 @@ export const Register = () => {
           inputType="email"
           name="email"
           label="Email: "
+          placeholder="Cuenta de email asociada a tu usuario..."
         />
         <InputTextArea
           value={bio}
           setValue={setBio}
           name="bio"
           label="Biografía: "
+          placeholder="Cuentanos algo de ti..."
         />
 
         <button>Crear usuario</button>
