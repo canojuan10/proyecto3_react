@@ -30,7 +30,7 @@ export const ValidationCode = () => {
           <Error message={error} />
         </>
       ) : (
-        <h3>{validateMessage}</h3>
+        <h4>{validateMessage}</h4>
       )}
       <button
         onClick={() => {

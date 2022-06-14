@@ -71,3 +71,10 @@
 .logginForm a {
   margin-left: 90px;
 }
+
+.registerForm .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

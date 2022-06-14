@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { Error } from "../../components/Error";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { InputTextArea } from "../../components/InputTextArea";
@@ -17,6 +17,7 @@ export const Register = () => {
   const [bio, setBio] = useState("");
   const [error, setError] = useState("");
   const [infoMessage, setInfoMessage] = useState("");
+  const navigate = useNavigate();
   const handleForm = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -42,9 +43,15 @@ export const Register = () => {
   ) : loading ? (
     <Loading message={sendFormMessage} />
   ) : infoMessage ? (
-    <div>
-      <h3>{infoMessage}</h3>
-      <Link to="/">Volver al inicio</Link>
+    <div className="return">
+      <h4>{infoMessage}</h4>
+      <button
+        onClick={() => {
+          navigate(`/`);
+        }}
+      >
+        Volver a inicio
+      </button>
     </div>
   ) : (
     <section className="register">
@@ -56,7 +63,7 @@ export const Register = () => {
           inputType="text"
           name="name"
           label="Nombre de usuario: "
-          placeholder="Como te harás llamar..."
+          placeholder="Escribe aqui..."
         />
         <InputStringRegister
           value={password}

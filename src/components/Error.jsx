@@ -5,7 +5,7 @@ export const Error = ({ message }) => {
     <>
       <div className="error">
         <img src={error} alt="" />
-        <h2>{message}</h2>
+        <h4>{message}</h4>
       </div>
     </>
   );

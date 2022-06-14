@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./style.css";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { recoveryPassService, resetPassService } from "../../services";
+import { useNavigate } from "react-router-dom";
+import { Error } from "../../components/Error";
 
 export const RecoveryPassword = () => {
   const [error, setError] = useState("");
@@ -11,7 +13,7 @@ export const RecoveryPassword = () => {
   const [resetMessage, setResetMessage] = useState("");
   const [recoverCode, setRecoverCode] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const handleForm = async (e) => {
     e.preventDefault();
@@ -52,6 +54,7 @@ export const RecoveryPassword = () => {
         />
         <button>Código de recuperación</button>
       </form>
+      {error ? <Error message={error} /> : null}
     </section>
   ) : !reset ? (
     <section className="resetPass">
@@ -73,9 +76,19 @@ export const RecoveryPassword = () => {
           label="New Password: "
         />
         <button>Resetear Contraseña</button>
+        {error ? <Error message={error} /> : null}
       </form>
     </section>
   ) : (
-    <h4> {resetMessage} </h4>
+    <div className="return">
+      <h4>{resetMessage}</h4>
+      <button
+        onClick={() => {
+          navigate(`/`);
+        }}
+      >
+        Volver a inicio
+      </button>
+    </div>
   );
 };

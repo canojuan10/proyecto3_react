@@ -39,10 +39,10 @@
   background-color: transparent;
   resize: none;
   outline: none;
-  width: 150px;
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  width: 700px;
   align-items: center;
 }
 .registerForm fieldset label,
@@ -71,4 +71,11 @@
 
 .registerForm a {
   margin-left: 90px;
+}
+
+.registerForm .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

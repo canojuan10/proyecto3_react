@@ -91,3 +91,10 @@
   cursor: pointer;
   color: #d1603d;
 }
+
+.editUserForm .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

@@ -99,3 +99,16 @@
   font-weight: 500;
   width: 150px;
 }
+
+.resetPassForm .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.resetPass .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
