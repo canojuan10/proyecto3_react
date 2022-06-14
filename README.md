@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href='https://github.com/canojuan10/proyecto3_react'>
+    <img src="src/image/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-## Available Scripts
+<h3 align="center">Collaborative Online News Web</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    BOOTCAMP HACK A BOSS-2022
+    <br />
+    <br />
+    <a href="https://github.com/canojuan10/proyecto3_react/issues">Report issue</a>
+   
+  </p>
+</div>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- ABOUT THE PROJECT -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+HAB 2022 final project. FrontEnd for the API-REST of collaborative news, previously carried out. In the following <a href="https://github.com/wicket-warrick/PROXECTO2_NODE">link</A> you can find the BackEnd repository.</br>
+The functionalities of creating user, logging...etc... have been developed. They will be described in the following document.
 
-### `npm run build`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [React.js](https://reactjs.org/)
+- [Cretae React App.js](https://create-react-app.dev/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run eject`
+# Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In the next chapter you can read how to download and install the different components and utilities of this project.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To get started, you must have a local copy on your computer.
+There are two options:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+A. CLONE the repo.
 
-## Learn More
+```sh
+git clone git@github.com:canojuan10/proyecto3_react.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+B. DOWNLOAD the repo.
+</br>
+</br>
+<a href='https://github.com/canojuan10/proyecto3_react/archive/refs/heads/main.zip'> Download repository</a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Config
 
-### Code Splitting
+1. Install NPM packages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```sh
+   npm install
+   ```
 
-### Analyzing the Bundle Size
+2. <p>Rename the '.example.env' file to '.env'; and configure the variables to be able to execute the project.</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. <p>Before creating the tables or loading the <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a>, you must create a database/schema on your SQL server, with the variable name assigned in the .env document (MYSQL_DATABASE)</p>
 
-### Making a Progressive Web App
+4. <p>Once you have created the database/schema; has two configuration options:</p>
+      <ul>
+    </br>
+    <li>Create the tables in the database/schema, without sample data.
+    <b>NOTICE:</b> Image files are not contained in the repository</li>
+    </br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```sh
+   node ./db/initDb.js
+   ```
 
-### Advanced Configuration
+     <li>Import the <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a> directly into your SQL server.
+   </li>
+    
+    </ul>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5. <p>Import the <a href=https://github.com/wicket-warrick/PROXECTO2_NODE/blob/main/documentacion/NODE_PROJECT.postman_collection.json>POSTMAN collection</a>, in order to test the API functionalities.</p>
 
-### Deployment
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- ROADMAP -->
 
-### `npm run build` fails to minify
+## Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] Feature 1
+- [ ] Feature 2
+- [ ] Feature 3
+  - [ ] Nested Feature
+
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+<h3>Hugo Suárez</h3>
+
+[![Linkedin][linkedin-shield]](https://www.linkedin.com/in/hugosuarezdevp)
+
+[![GitHub][github-shield]](https://github.com/wicket-warrick)
+
+<h3>Juan Fernández</h3>
+
+[![Linkedin][linkedin-shield]](https://www.linkedin.com/in/juanfernandezmirandacano)
+
+[![GitHub][github-shield]](https://github.com/canojuan10)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+- [HACK A BOSS](https://www.hackaboss.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
+[github-shield]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
