@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./style.css";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { recoveryPassService, resetPassService } from "../../services";
 
@@ -40,21 +40,24 @@ export const RecoveryPassword = () => {
   };
 
   return !recovery ? (
-    <form onSubmit={handleForm}>
-      <InputStringRegister
-        value={email}
-        setValue={setEmail}
-        inputType="email"
-        name="email"
-        label="Email: "
-      />
-      <button>Código de recuperación</button>
-    </form>
+    <section className="recoveryPass">
+      <h2>Recovery Password</h2>
+      <form className="recoveryPassForm" onSubmit={handleForm}>
+        <InputStringRegister
+          value={email}
+          setValue={setEmail}
+          inputType="email"
+          name="email"
+          label="Email: "
+        />
+        <button>Código de recuperación</button>
+      </form>
+    </section>
   ) : !reset ? (
-    <>
-      <p>{recoveryMessage}</p>
-
-      <form onSubmit={handleForm2}>
+    <section className="resetPass">
+      <h2>Reset Password</h2>
+      <h4>{recoveryMessage}</h4>
+      <form className="resetPassForm" onSubmit={handleForm2}>
         <InputStringRegister
           value={recoverCode}
           setValue={setRecoverCode}
@@ -71,7 +74,7 @@ export const RecoveryPassword = () => {
         />
         <button>Resetear Contraseña</button>
       </form>
-    </>
+    </section>
   ) : (
     <p> {resetMessage} </p>
   );
