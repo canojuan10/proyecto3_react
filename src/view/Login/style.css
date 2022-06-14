@@ -72,9 +72,13 @@
   margin-left: 90px;
 }
 
-.registerForm .error {
+.loggin .error {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 90px;
+}
+.loggin .error img {
+  padding-bottom: 2rem;
 }

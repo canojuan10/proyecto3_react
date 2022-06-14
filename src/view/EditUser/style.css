@@ -94,7 +94,12 @@
 
 .editUserForm .error {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  margin-left: 90px;
+}
+.editUserForm .error img {
+  padding-bottom: 2rem;
 }
