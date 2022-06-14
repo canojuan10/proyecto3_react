@@ -1,4 +1,5 @@
 import propTypes from "prop-types";
+import "./style.css";
 import error from "../image/error.png";
 export const Error = ({ message }) => {
   return (

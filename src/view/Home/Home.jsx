@@ -18,7 +18,7 @@ export const Home = () => {
         <NewsFilter setTopic={setTopic} topic={topic} />
       </div>
       <NewsList news={news} error={error} deleteNew={deleteNew} />
-      <ListbyVotes />
+      <ListbyVotes error={error} />
     </div>
   );
 };
