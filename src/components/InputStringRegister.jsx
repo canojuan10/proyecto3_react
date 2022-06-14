@@ -6,6 +6,7 @@ export const InputStringRegister = ({
   inputType,
   name,
   label,
+  placeholder,
 }) => {
   return (
     <fieldset>
@@ -18,6 +19,7 @@ export const InputStringRegister = ({
         required
         onChange={(e) => setValue(e.target.value)}
         autoComplete="off"
+        placeholder={placeholder}
       />
     </fieldset>
   );
@@ -29,4 +31,5 @@ InputStringRegister.propTypes = {
   inputType: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
+  placeholder: propTypes.string,
 };

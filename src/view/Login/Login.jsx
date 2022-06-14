@@ -6,6 +6,8 @@ import { InputStringRegister } from "../../components/InputStringRegister";
 import { Link } from "react-router-dom";
 import { Loading, loginMessage } from "../../components/Loading";
 import { Error } from "../../components/Error";
+import "./style.css";
+
 export const Login = () => {
   const navigate = useNavigate();
   const { login, setUser, user } = useContext(AuthContext);
@@ -39,15 +41,16 @@ export const Login = () => {
   ) : loading ? (
     <Loading message={loginMessage} />
   ) : (
-    <section>
-      <h1>Login</h1>
-      <form onSubmit={handleForm}>
+    <section className="loggin">
+      <h2>Login</h2>
+      <form className="logginForm" onSubmit={handleForm}>
         <InputStringRegister
           value={email}
           setValue={setEmail}
           inputType="email"
           name="email"
           label="Email"
+          placeholder="Introduce tu email..."
         />
         <InputStringRegister
           value={password}
@@ -55,9 +58,10 @@ export const Login = () => {
           inputType="password"
           name="pass"
           label="Password"
+          placeholder="Introduze tu password..."
         />
 
-        <button>Login</button>
+        <button>Loggin</button>
 
         <Link to={"/user/recoverypassword"}>¿No recuerdas tu contraseña?</Link>
         {error ? <Error message={error} /> : null}
