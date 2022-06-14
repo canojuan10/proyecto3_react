@@ -76,6 +76,6 @@ export const RecoveryPassword = () => {
       </form>
     </section>
   ) : (
-    <p> {resetMessage} </p>
+    <h4> {resetMessage} </h4>
   );
 };
