@@ -11,8 +11,7 @@ import { Loading, loginMessage, deleteUserMessage } from "./Loading";
 export const UserDetailComponent = ({ userData, error }) => {
   const navigate = useNavigate();
   const [edited, setEdited] = useState(false);
-  const { logout } = useContext(AuthContext);
-  const { user, token, setError } = useContext(AuthContext);
+  const { user, token, setError, logout } = useContext(AuthContext);
   const [url, setUrl] = useState(userData.url);
   const [loadingSendForm, setLoadingSendForm] = useState(false);
   const removeUser = async (idUser, token) => {
