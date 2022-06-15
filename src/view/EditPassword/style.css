@@ -90,11 +90,11 @@
   color: #d1603d;
 }
 
-.error {
+.editPassForm .error {
   text-align: center;
   margin: 2rem;
   padding-left: 80px;
 }
-.error img {
+.editPassForm .error img {
   padding-bottom: 2rem;
 }

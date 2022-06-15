@@ -30,64 +30,71 @@ export const UserDetailComponent = ({ userData, error }) => {
   return loadingSendForm ? (
     <Loading message={deleteUserMessage} />
   ) : (
-    <article className="user">
+    <>
       <h2>{userData?.name}</h2>
-      <p className="bio">{userData?.bio}</p>
-      <p className="createdAt">{stringDateFormater(userData?.createdAt)}</p>
-      <p className="email">{userData?.email}</p>
+      <section className="user">
+        <article className="userImage">
+          {userData?.url ? (
+            <img
+              src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_AVATAR_DIR}/${url}`}
+              alt={userData?.name}
+            />
+          ) : null}
+        </article>
+        <article className="userData">
+          <h2>About me:</h2>
+          <p className="bio">{userData?.bio}</p>
+          <h2>Cretaed At:</h2>
+          <p className="createdAt">{stringDateFormater(userData?.createdAt)}</p>
+          <h2>Email:</h2>
+          <p className="email">{userData?.email}</p>
+        </article>
+        {user && user.id === userData.id ? (
+          <article className="button">
+            <button
+              onClick={() => {
+                setEdited(true);
+              }}
+            >
+              Editar Avatar
+            </button>
+            <button
+              onClick={(e) => {
+                removeUser(userData.id, token);
+              }}
+            >
+              Borrar Usuario
+            </button>
+            <button
+              onClick={() => {
+                navigate(`/user/${user.id}/edit`);
+              }}
+            >
+              Editar Usuario
+            </button>
+            <button
+              onClick={() => {
+                navigate(`/user/${user.id}/password`);
+              }}
+            >
+              Editar Password
+            </button>
 
-      {userData?.url ? (
-        <img
-          src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_AVATAR_DIR}/${url}`}
-          alt={userData?.name}
-        />
-      ) : null}
-
-      {user && user.id === userData.id ? (
-        <section>
-          <button
-            onClick={() => {
-              setEdited(true);
-            }}
-          >
-            Editar Avatar
-          </button>
-          <button
-            onClick={(e) => {
-              removeUser(userData.id, token);
-            }}
-          >
-            Borrar Usuario
-          </button>
-          <button
-            onClick={() => {
-              navigate(`/user/${user.id}/edit`);
-            }}
-          >
-            Editar Usuario
-          </button>
-          <button
-            onClick={() => {
-              navigate(`/user/${user.id}/password`);
-            }}
-          >
-            Edita Password
-          </button>
-
-          {error ? <Error message={error} /> : null}
-        </section>
-      ) : null}
-      {edited ? (
-        <UploadAvatar
-          token={token}
-          id={user.id}
-          userData={userData}
-          setEdited={setEdited}
-          setUrl={setUrl}
-        />
-      ) : null}
-      <Link to="/">Volver al inicio</Link>
-    </article>
+            {error ? <Error message={error} /> : null}
+          </article>
+        ) : null}
+        {edited ? (
+          <UploadAvatar
+            token={token}
+            id={user.id}
+            userData={userData}
+            setEdited={setEdited}
+            setUrl={setUrl}
+          />
+        ) : null}
+        <Link to="/">Volver al inicio</Link>
+      </section>
+    </>
   );
 };
 
