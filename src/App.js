@@ -11,6 +11,9 @@ import { Footer } from "./components/Footer";
 import { ValidationCode } from "./view/ValidationCode/ValidationCode";
 import { CreateNew } from "./view/CreateNew/CreateNew";
 import { EditNew } from "./view/EditNew/EditNew";
+import { RecoveryPassword } from "./view/RecoveryPassword/RecoveryPassword";
+import { EditUser } from "./view/EditUser/EditUser";
+import { EditPassword } from "./view/EditPassword/EditPassword";
 function App() {
   return (
     <div className="App">
@@ -18,14 +21,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/user" element={<UserDetail />}></Route>
+        <Route path="/user/:idUser" element={<UserDetail />}></Route>
+        <Route path="/user/:idUser/edit" element={<EditUser />}></Route>
         <Route path="/new/:idNew" element={<NewDetail />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/edit/:idNew" element={<EditNew />}></Route>
         <Route path="/createnew" element={<CreateNew />}></Route>
+        <Route path="/user/:idUser/password" element={<EditPassword />}></Route>
         <Route
           path="/user/validate/:registrationCode"
           element={<ValidationCode />}
+        ></Route>
+        <Route
+          path="/user/recoverypassword"
+          element={<RecoveryPassword />}
         ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

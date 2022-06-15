@@ -1,34 +1,13 @@
-import { useEffect, useState } from "react";
 import { Topics } from "./Topics";
-
-export const CreateNewForm = ({
-  handleForm,
-  chooseOption,
-  setTopic,
-  newValue,
-}) => {
-  const [title, setTitle] = useState("");
-  const [entradilla, setEntradilla] = useState("");
-  const [description, setDescription] = useState("");
-  useEffect(() => {
-    setTopic(newValue.topic);
-    setDescription(newValue.description);
-    setTitle(newValue.title);
-    setEntradilla(newValue.entradilla);
-  }, [
-    newValue.title,
-    newValue.description,
-    newValue.entradilla,
-    newValue.topic,
-  ]);
-
+import "./style.css";
+import propTypes from "prop-types";
+export const CreateNewForm = ({ handleForm, newValue }) => {
   return (
     <form className="createNew" onSubmit={handleForm}>
       <fieldset>
         <label htmlFor="title">Título</label>
         <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          defaultValue={newValue.title}
           type="text"
           name="title"
           id="title"
@@ -41,20 +20,18 @@ export const CreateNewForm = ({
       <fieldset>
         <label htmlFor="subtitle">Entradilla</label>
         <textarea
-          value={entradilla}
-          onChange={(e) => setEntradilla(e.target.value)}
+          defaultValue={newValue.entradilla}
           name="entradilla"
           id="subtitle"
           minLength={0}
           maxLength={100}
         ></textarea>
       </fieldset>
-      <Topics value={chooseOption} setValue={setTopic} />
+      <Topics value={newValue.topic} />
       <fieldset>
         <label htmlFor="description">Noticia</label>
         <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          defaultValue={newValue.description}
           name="description"
           id="description"
           minLength={50}
@@ -63,10 +40,21 @@ export const CreateNewForm = ({
         ></textarea>
       </fieldset>
       <fieldset>
-        <label htmlFor="image">Image</label>
+        {newValue.url ? (
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${newValue.url}`}
+            alt={newValue.title}
+            style={{ width: "100px" }}
+          />
+        ) : null}
+        <label htmlFor="image">Imagen</label>
         <input type="file" name="photo" id="image" accept={"image/*"} />
       </fieldset>
-      <button>Subir noticia</button>
+      <button>Editar Noticia</button>
     </form>
   );
+};
+CreateNewForm.propTypes = {
+  newValue: propTypes.object.isRequired,
+  handleForm: propTypes.func.isRequired,
 };

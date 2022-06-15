@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { getNewByIdService } from "../services";
+import { getUserByIdService } from "../services";
 
-export const useNew = (idNew) => {
-  const [_new, setNew] = useState({});
+export const useUser = (idUser) => {
+  const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const load = async () => {
       try {
         setLoading(true);
-        const data = await getNewByIdService(idNew);
-        setNew(data);
-        console.log(data);
+        const data = await getUserByIdService(idUser);
+        setUserData(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -19,7 +18,7 @@ export const useNew = (idNew) => {
       }
     };
     load();
-  }, [idNew]);
+  }, [idUser]);
 
-  return { _new, error, loading, setError };
+  return { userData, error, loading, setError };
 };
