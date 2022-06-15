@@ -4,7 +4,7 @@ import { Loading, editPasswordMessage } from "../../components/Loading";
 import { AuthContext } from "../../context/AuthContext";
 import { editPassword } from "../../services";
 import { InputStringRegister } from "../../components/InputStringRegister";
-
+import "./style.css";
 import { Error, errorEditPasswordMessage } from "../../components/Error";
 
 export const EditPassword = () => {
@@ -43,8 +43,8 @@ export const EditPassword = () => {
   return loading ? (
     <Loading message={editPasswordMessage} />
   ) : message ? (
-    <>
-      <p>{message}</p>
+    <div className="return">
+      <h4>{message}</h4>
       <button
         onClick={() => {
           navigate(`/user/${idUser}`);
@@ -52,36 +52,38 @@ export const EditPassword = () => {
       >
         Volver al perfil
       </button>
-    </>
+    </div>
   ) : (
     <>
-      <h1>Cambio de Password:</h1>
-      <form onSubmit={handleForm}>
-        <InputStringRegister
-          value={currentPassword}
-          setValue={setCurrentPassword}
-          inputType="password"
-          name="currentPassword"
-          label="Password actual: "
-        />
-        <InputStringRegister
-          value={newPassword}
-          setValue={setNewPassword}
-          inputType="password"
-          name="newPassword"
-          label="Nuevo password:"
-        />
-        <InputStringRegister
-          value={repeatPassword}
-          setValue={setRepeatPassword}
-          inputType="password"
-          name="repeatPassword"
-          label="Repite password:"
-        />
+      <h2>Cambio de Password:</h2>
+      <section className="editPass">
+        <form className="editPassForm" onSubmit={handleForm}>
+          <InputStringRegister
+            value={currentPassword}
+            setValue={setCurrentPassword}
+            inputType="password"
+            name="currentPassword"
+            label="Password actual: "
+          />
+          <InputStringRegister
+            value={newPassword}
+            setValue={setNewPassword}
+            inputType="password"
+            name="newPassword"
+            label="Nuevo password:"
+          />
+          <InputStringRegister
+            value={repeatPassword}
+            setValue={setRepeatPassword}
+            inputType="password"
+            name="repeatPassword"
+            label="Repite password:"
+          />
 
-        <button>Actualizar Password</button>
+          <button>Actualizar Password</button>
+        </form>
         {error ? <Error message={error} /> : null}
-      </form>
+      </section>
     </>
   );
 };

@@ -1,0 +1,100 @@
+:root {
+  --main-black-color: #040f0f;
+  --main-orange-color: #d1603d;
+  --main-blue-color: #16697a;
+  --main-white-color: #ffffff;
+  --main-grey-color: #d9d9d9;
+
+  --regular-font-size: 20px;
+  --secondary-font-size: 18px;
+  --h3-font-size: 28px;
+  --h2-font-size: 32px;
+  --h1-font-size: 68px;
+}
+
+.App .editPass {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.App h2 {
+  margin-left: 2rem;
+}
+.App .editPass .editPassForm {
+  margin: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+.editPassForm fieldset {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+.editPassForm fieldset label,
+.labelImg {
+  font-weight: 500;
+  width: 200px;
+  text-align: center;
+}
+.editPassForm fieldset input {
+  background-color: #d9d9d9;
+  border: 2px solid var(--main-orange-color);
+  width: 500px;
+  padding: 0.25rem 0.5rem;
+}
+
+.editPassForm button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d1603d;
+  padding: 0.25rem 0.5rem;
+  padding-left: 80px;
+}
+
+.App .return {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.App .return h4 {
+  text-align: center;
+  padding: 2rem;
+}
+
+.return button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d1603d;
+}
+
+.error {
+  text-align: center;
+  margin: 2rem;
+  padding-left: 80px;
+}
+.error img {
+  padding-bottom: 2rem;
+}
