@@ -52,32 +52,34 @@ export const EditUser = () => {
       </button>
     </div>
   ) : (
-    <section className="editUser">
+    <>
       <h2>Edición de Usuario</h2>
-      <form className="editUserForm" onSubmit={handleForm}>
-        <InputStringRegister
-          value={name}
-          setValue={setName}
-          inputType="text"
-          name="name"
-          label="Nombre de usuario: "
-        />
-        <InputStringRegister
-          value={email}
-          setValue={setEmail}
-          inputType="email"
-          name="email"
-          label="Email: "
-        />
-        <InputTextArea
-          value={bio}
-          setValue={setBio}
-          name="bio"
-          label="Biografía: "
-        />
-        <button>Editar usuario</button>
+      <section className="editUser">
+        <form className="editUserForm" onSubmit={handleForm}>
+          <InputStringRegister
+            value={name}
+            setValue={setName}
+            inputType="text"
+            name="name"
+            label="Nombre de usuario: "
+          />
+          <InputStringRegister
+            value={email}
+            setValue={setEmail}
+            inputType="email"
+            name="email"
+            label="Email: "
+          />
+          <InputTextArea
+            value={bio}
+            setValue={setBio}
+            name="bio"
+            label="Biografía: "
+          />
+          <button>Editar usuario</button>
+        </form>
         {error ? <Error message={error} /> : null}
-      </form>
-    </section>
+      </section>
+    </>
   );
 };
