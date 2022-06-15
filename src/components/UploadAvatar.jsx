@@ -8,15 +8,14 @@ import {
 import "./style.css";
 import { Loading, editUserMessage } from "./Loading";
 import { errorFetchMessage, Error } from "./Error";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
-  const [messageConfirm, setMessageConfirm] = useState("");
   const [error, setError] = useState("");
   const { idUser } = useParams();
   const { setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -26,9 +25,11 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
       }
       const data = new FormData(e.target);
       if (data) {
-        const response = await uploadAvatarService({ id, data, token });
-        setMessageConfirm(response.data.message);
+        await uploadAvatarService({ id, data, token });
         setEdited(false);
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
       }
     } catch (error) {
       setError(errorFetchMessage);
@@ -60,7 +61,6 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
         </fieldset>
         <button>Subir Avatar</button>
       </form>
-      {messageConfirm ? <p>{messageConfirm}</p> : null}
     </>
   );
 };
