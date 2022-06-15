@@ -31,7 +31,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -45,11 +44,11 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
-
+<img src='./src/image/screenshot.png' width=100%>
+</br>
+</br>
 HAB 2022 final project. FrontEnd for the API-REST of collaborative news, previously carried out. In the following <a href="https://github.com/wicket-warrick/PROXECTO2_NODE">link</A> you can find the BackEnd repository.</br>
 The functionalities of creating user, logging...etc... have been developed. They will be described in the following document.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
@@ -89,38 +88,23 @@ B. DOWNLOAD the repo.
 
 2. <p>Rename the '.example.env' file to '.env'; and configure the variables to be able to execute the project.</p>
 
-3. <p>Before creating the tables or loading the <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a>, you must create a database/schema on your SQL server, with the variable name assigned in the .env document (MYSQL_DATABASE)</p>
-
-4. <p>Once you have created the database/schema; has two configuration options:</p>
-      <ul>
-    </br>
-    <li>Create the tables in the database/schema, without sample data.
-    <b>NOTICE:</b> Image files are not contained in the repository</li>
-    </br>
+3. To run the app
 
    ```sh
-   node ./db/initDb.js
+   npm start
    ```
 
-     <li>Import the <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a> directly into your SQL server.
-   </li>
-    
-    </ul>
-
-5. <p>Import the <a href=https://github.com/wicket-warrick/PROXECTO2_NODE/blob/main/documentacion/NODE_PROJECT.postman_collection.json>POSTMAN collection</a>, in order to test the API functionalities.</p>
+   <p>If you have previously installed the  <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a>, the application will launch correctly.
+   You will have users and news to start testing the app.</br></br>
+   </br>If you haven't installed the  <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/tree/main/documentacion/databaseExample'>sample database</a>, the app will start with no news and no users.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ROADMAP -->
+## Usage
 
-## Roadmap
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -135,7 +119,6 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 [![GitHub][github-shield]](https://github.com/wicket-warrick)
 
 <h3>Juan Fernández</h3>
-
 [![Linkedin][linkedin-shield]](https://www.linkedin.com/in/juanfernandezmirandacano)
 
 [![GitHub][github-shield]](https://github.com/canojuan10)
@@ -154,4 +137,4 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
 [github-shield]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: ./src/image/screenshot.png
