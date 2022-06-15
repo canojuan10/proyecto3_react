@@ -1,46 +1,52 @@
 import "./style.css";
+import gitHubIcon from "../icons/gitHub.svg";
+import linkedInIcon from "../icons/linkedin.svg";
+
 export const Footer = () => {
   return (
     <footer>
       <p>© 2022 HACK A BOSS</p>
-      <p>
-        {/* icono linkedin */}
+      <p className="linkedInLink">
+        <img src={linkedInIcon} alt="linkedIn link" />
         <a
+          className="linkedInJuan"
           href="https://www.linkedin.com/in/juanfernandezmirandacano"
           target="_blank"
           rel="noreferrer"
         >
-          Juan Fernández{" "}
+          <span>Juan Fernández</span>
         </a>
-        &{" "}
+        <span>&</span>
         <a
+          className="linkedInHugo"
           href="https://www.linkedin.com/in/hugosuarezdevp"
           target="_blank"
           rel="noreferrer"
         >
-          Hugo Suárez
+          <span>Hugo Suárez</span>
         </a>
       </p>
-      {/* icono-link HAB */}
-      {/* icono-link repositorio Backend */}
-      <div>
+      <div className="gitHubLinks">
         <a
           href="https://github.com/wicket-warrick/PROXECTO2_NODE"
           target="_blank"
           rel="noreferrer"
+          className="backEndLink"
         >
-          BackEnd
+          <img src={gitHubIcon} alt="gitHub link" />
+          <span>BackEnd</span>
         </a>
 
         <a
           href="https://github.com/canojuan10/proyecto3_react"
           target="_blank"
           rel="noreferrer"
+          className="frontEndLink"
         >
-          FrontEnd
+          <img src={gitHubIcon} alt="gitHub link" />
+          <span>FrontEnd</span>
         </a>
       </div>
-      {/* icono-link repositorio FrontEnd */}
     </footer>
   );
 };

@@ -12,54 +12,57 @@
   --h1-font-size: 68px;
 }
 
-.App .register {
+.App .recoveryPass,
+.App .resetPass {
   margin: 0;
   display: flex;
   flex-direction: column;
 }
-.App .register h2 {
+.App .recoveryPass h2 {
   margin-left: 2rem;
 }
-.App .register .registerForm {
+.App .recoveryPass .recoveryPassForm {
   flex-grow: 1;
   margin: 0;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
   padding: 0.25rem 0.25rem;
   border: none;
   background-color: transparent;
   resize: none;
   outline: none;
 }
-.registerForm fieldset {
+.recoveryPassForm fieldset,
+.resetPassForm fieldset {
   border: none;
   background-color: transparent;
   resize: none;
   outline: none;
-  align-items: center;
+  width: 150px;
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  width: 600px;
   align-items: center;
+  padding-bottom: 2rem;
 }
-.registerForm fieldset label,
-.labelImg {
+.recoveryPassForm fieldset label,
+.labelImg,
+.resetPassForm fieldset label {
   font-weight: 500;
 }
-.registerForm fieldset input,
-.registerForm fieldset textarea {
+.recoveryPassForm fieldset input,
+.resetPassForm fieldset input {
   background-color: #d9d9d9;
   border: 2px solid var(--main-orange-color);
   width: 500px;
   padding: 0.25rem 0.5rem;
 }
-.registerForm fieldset textarea {
-  min-height: 150px;
-}
-.registerForm button {
+
+.recoveryPassForm button,
+.resetPassForm button {
   border: none;
   padding: 0.25rem 0.75rem;
   background-color: transparent;
@@ -69,18 +72,43 @@
   margin-left: 90px;
 }
 
-.registerForm a {
-  margin-left: 90px;
+.resetPass h4 {
+  text-align: center;
+  margin-bottom: 2rem;
 }
-
-.registerForm .error {
+.App .resetPass h2 {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+.App .resetPass .resetPassForm {
+  flex-grow: 1;
+  margin: 0;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-left: 90px;
+  justify-content: flex-start;
+  padding: 0.25rem 0.25rem;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
-.registerForm .error img {
-  padding-bottom: 2rem;
+
+.resetPassForm fieldset label {
+  font-weight: 500;
+  width: 150px;
+}
+
+.resetPassForm .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.resetPass .error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

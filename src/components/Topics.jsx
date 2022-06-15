@@ -1,8 +1,9 @@
 import propTypes from "prop-types";
 import "./style.css";
-export const Topics = ({ value }) => {
+export const Topics = ({ value, inForm = false }) => {
   return (
     <fieldset>
+      {inForm ? <label htmlFor="topic">Tema</label> : null}
       <select required autoFocus defaultValue={value} name="topic" id="topic">
         <option value="">Todos los temas</option>
         <option value="politica">Política</option>

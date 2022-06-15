@@ -3,11 +3,12 @@
   --main-orange-color: #d1603d;
   --main-blue-color: #16697a;
   --main-white-color: #ffffff;
+  --main-grey-color: #d9d9d9;
 
-  --regular-font-size: 18px;
-  --secondary-font-size: 14px;
-  --h3-font-size: 24px;
-  --h2-font-size: 30px;
+  --regular-font-size: 20px;
+  --secondary-font-size: 18px;
+  --h3-font-size: 28px;
+  --h2-font-size: 32px;
   --h1-font-size: 68px;
 }
 header {
@@ -20,33 +21,142 @@ header > h1 {
   margin-left: 4rem;
 }
 header > nav section {
-  margin: 1rem;
-  display: flex;
   flex-direction: column;
+  margin-bottom: 0.4rem;
+  display: flex;
   align-items: center;
 }
+header > nav {
+  align-self: flex-end;
+  margin: 0;
+}
+/* .registerLogin {
+  margin-bottom: 2.75rem;
+} */
+.registerLogin li .login {
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-right: 1rem;
+}
 
-header > nav > section div button {
-  margin: 0.5rem;
+header > nav > section button {
+  display: flex;
+  align-items: center;
   border: none;
   padding: 0.25rem 0.75rem;
   background-color: transparent;
   color: white;
+  cursor: pointer;
+}
+header > nav > section .createNew img {
+  margin-left: 0.4rem;
+}
+header > nav > section div {
+  display: flex;
+  align-items: center;
+}
+header > nav > section div .userData {
+  display: flex;
+  align-items: center;
 }
 
+.userData a,
+.userData span {
+  margin-left: 0.4rem;
+}
+.userData button {
+  margin: 0;
+}
 .new {
-  border: 2px solid var(--main-orange-color);
+  border: 3px solid var(--main-orange-color);
   padding: 0.5rem;
   margin-bottom: 3rem;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
-.new div {
-  flex-direction: column;
+.newDetail .new {
+  border: none;
+  flex-grow: 1;
 }
+.newBodyTitle {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  gap: 1rem;
+}
+.newData {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.newData div {
+  width: 33%;
+  display: flex;
+  justify-content: space-around;
+}
+.topic,
+.author {
+  color: #d1603d;
+  font-weight: 700;
+}
+.newBodyImg {
+  display: flex;
+  justify-content: space-between;
+}
+
 .new img {
   max-width: 300px;
+  width: 40%;
+  height: 40%;
   max-height: 300px;
   border-radius: 10px;
+  align-self: flex-end;
+  margin-bottom: auto;
+}
+.newDetail .new img {
+  max-width: 800px;
+  width: 40%;
+  height: 40%;
+  max-height: 800px;
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-bottom: auto;
+}
+.deleteEdit button,
+.newData button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.gitHubLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.gitHubLinks a img {
+  width: 20px;
+}
+.backEndLink {
+  display: flex;
+  align-items: center;
+}
+.frontEndLink {
+  display: flex;
+  align-items: center;
+}
+.linkedInLink {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.linkedInLink img {
+  width: 15px;
 }

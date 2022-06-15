@@ -1,7 +1,9 @@
 import { useState } from "react";
-
+import "./style.css";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { recoveryPassService, resetPassService } from "../../services";
+import { useNavigate } from "react-router-dom";
+import { Error } from "../../components/Error";
 
 export const RecoveryPassword = () => {
   const [error, setError] = useState("");
@@ -11,7 +13,7 @@ export const RecoveryPassword = () => {
   const [resetMessage, setResetMessage] = useState("");
   const [recoverCode, setRecoverCode] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const handleForm = async (e) => {
     e.preventDefault();
@@ -40,21 +42,25 @@ export const RecoveryPassword = () => {
   };
 
   return !recovery ? (
-    <form onSubmit={handleForm}>
-      <InputStringRegister
-        value={email}
-        setValue={setEmail}
-        inputType="email"
-        name="email"
-        label="Email: "
-      />
-      <button>Código de recuperación</button>
-    </form>
+    <section className="recoveryPass">
+      <h2>Recovery Password</h2>
+      <form className="recoveryPassForm" onSubmit={handleForm}>
+        <InputStringRegister
+          value={email}
+          setValue={setEmail}
+          inputType="email"
+          name="email"
+          label="Email: "
+        />
+        <button>Código de recuperación</button>
+      </form>
+      {error ? <Error message={error} /> : null}
+    </section>
   ) : !reset ? (
-    <>
-      <p>{recoveryMessage}</p>
-
-      <form onSubmit={handleForm2}>
+    <section className="resetPass">
+      <h2>Reset Password</h2>
+      <h4>{recoveryMessage}</h4>
+      <form className="resetPassForm" onSubmit={handleForm2}>
         <InputStringRegister
           value={recoverCode}
           setValue={setRecoverCode}
@@ -70,9 +76,19 @@ export const RecoveryPassword = () => {
           label="New Password: "
         />
         <button>Resetear Contraseña</button>
+        {error ? <Error message={error} /> : null}
       </form>
-    </>
+    </section>
   ) : (
-    <p> {resetMessage} </p>
+    <div className="return">
+      <h4>{resetMessage}</h4>
+      <button
+        onClick={() => {
+          navigate(`/`);
+        }}
+      >
+        Volver a inicio
+      </button>
+    </div>
   );
 };

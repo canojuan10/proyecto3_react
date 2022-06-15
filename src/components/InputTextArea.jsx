@@ -1,6 +1,12 @@
 import propTypes from "prop-types";
 import "./style.css";
-export const InputTextArea = ({ value, setValue, name, label }) => {
+export const InputTextArea = ({
+  value,
+  setValue,
+  name,
+  label,
+  placeholder,
+}) => {
   return (
     <fieldset>
       <label htmlFor={name}>{label}</label>
@@ -11,6 +17,7 @@ export const InputTextArea = ({ value, setValue, name, label }) => {
         required
         onChange={(e) => setValue(e.target.value)}
         autoComplete="off"
+        placeholder={placeholder}
       />
     </fieldset>
   );
@@ -21,4 +28,5 @@ InputTextArea.propTypes = {
   value: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
+  placeholder: propTypes.string,
 };

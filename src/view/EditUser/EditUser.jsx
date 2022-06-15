@@ -6,7 +6,7 @@ import { editUserService, getUserByIdService } from "../../services";
 import { InputStringRegister } from "../../components/InputStringRegister";
 import { InputTextArea } from "../../components/InputTextArea";
 import { Error, errorFetchMessage } from "../../components/Error";
-
+import "./style.css";
 export const EditUser = () => {
   const { idUser } = useParams();
   const { user, token, setUser } = useContext(AuthContext);
@@ -41,8 +41,8 @@ export const EditUser = () => {
   return loading ? (
     <Loading message={editUserMessage} />
   ) : message ? (
-    <>
-      <p>{message}</p>
+    <div className="return">
+      <h4>{message}</h4>
       <button
         onClick={() => {
           navigate(`/user/${idUser}`);
@@ -50,11 +50,11 @@ export const EditUser = () => {
       >
         Volver a inicio
       </button>
-    </>
+    </div>
   ) : (
-    <>
-      <h1>Edición de Usuario</h1>
-      <form onSubmit={handleForm}>
+    <section className="editUser">
+      <h2>Edición de Usuario</h2>
+      <form className="editUserForm" onSubmit={handleForm}>
         <InputStringRegister
           value={name}
           setValue={setName}
@@ -78,6 +78,6 @@ export const EditUser = () => {
         <button>Editar usuario</button>
         {error ? <Error message={error} /> : null}
       </form>
-    </>
+    </section>
   );
 };

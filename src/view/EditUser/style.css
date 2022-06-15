@@ -1,0 +1,105 @@
+:root {
+  --main-black-color: #040f0f;
+  --main-orange-color: #d1603d;
+  --main-blue-color: #16697a;
+  --main-white-color: #ffffff;
+  --main-grey-color: #d9d9d9;
+
+  --regular-font-size: 20px;
+  --secondary-font-size: 18px;
+  --h3-font-size: 28px;
+  --h2-font-size: 32px;
+  --h1-font-size: 68px;
+}
+
+.App .editUser {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.App .editUser h2 {
+  margin-left: 2rem;
+}
+.App .editUser .editUserForm {
+  flex-grow: 1;
+  margin: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.25rem 0.25rem;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+.editUserForm fieldset {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  align-items: center;
+}
+.editUserForm fieldset label,
+.labelImg {
+  font-weight: 500;
+  width: 200px;
+  text-align: center;
+}
+.editUserForm fieldset input,
+.editUserForm fieldset textarea {
+  background-color: #d9d9d9;
+  border: 2px solid var(--main-orange-color);
+  width: 500px;
+  padding: 0.25rem 0.5rem;
+}
+.editUserForm fieldset textarea {
+  min-height: 150px;
+}
+.editUserForm button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d1603d;
+  margin-left: 90px;
+}
+
+.App .return {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.App .return h4 {
+  text-align: center;
+  padding: 2rem;
+}
+
+.return button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d1603d;
+}
+
+.editUserForm .error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-left: 90px;
+}
+.editUserForm .error img {
+  padding-bottom: 2rem;
+}

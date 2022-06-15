@@ -3,7 +3,7 @@ import "./style.css";
 import propTypes from "prop-types";
 export const CreateNewForm = ({ handleForm, newValue }) => {
   return (
-    <form className="createNew" onSubmit={handleForm}>
+    <form className="editNewForm" onSubmit={handleForm}>
       <fieldset>
         <label htmlFor="title">Título</label>
         <input
@@ -27,7 +27,7 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
           maxLength={100}
         ></textarea>
       </fieldset>
-      <Topics value={newValue.topic} />
+      <Topics value={newValue.topic} inForm={true} />
       <fieldset>
         <label htmlFor="description">Noticia</label>
         <textarea
@@ -40,14 +40,16 @@ export const CreateNewForm = ({ handleForm, newValue }) => {
         ></textarea>
       </fieldset>
       <fieldset>
-        {newValue.url ? (
-          <img
-            src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${newValue.url}`}
-            alt={newValue.title}
-            style={{ width: "100px" }}
-          />
-        ) : null}
-        <label htmlFor="image">Imagen</label>
+        <label htmlFor="image">
+          <p className="labelImg">Imagen</p>
+          {newValue.url ? (
+            <img
+              src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${newValue.url}`}
+              alt={newValue.title}
+              style={{ width: "80px" }}
+            />
+          ) : null}
+        </label>
         <input type="file" name="photo" id="image" accept={"image/*"} />
       </fieldset>
       <button>Editar Noticia</button>

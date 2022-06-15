@@ -4,7 +4,7 @@ import { Error, errorFetchMessage } from "./Error";
 import "./style.css";
 export const NewsList = ({ news, error, deleteNew }) => {
   return news.length ? (
-    <ul>
+    <ul className="listNews">
       {news
         .slice(0)
         .reverse()

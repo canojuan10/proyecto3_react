@@ -49,47 +49,22 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
 
   return (
     <article className="new">
-      <div>
-        <h3>{_new?.title}</h3>
-        <p className="entradilla">{_new?.entradilla}</p>
-        {isDetail ? <p className="description">{_new?.description}</p> : null}
-        {_new.votes ? <p className="votes">Votos: {_new.votes}</p> : null}
-        {_new.createdAt ? (
-          <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
-        ) : null}
-        <p className="topic">{_new?.topic}</p>
-        <Link className="author" to={`/user/${_new?.user_id}`}>
-          {_new?.name}
-        </Link>
-
-        {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
-        {user ? (
-          <button
-            onClick={() => {
-              voteNew(_new.id);
-            }}
-          >
-            Votar
-          </button>
+      <div className="newBodyImg">
+        <div className="newBodyTitle">
+          <h3>{_new?.title}</h3>
+          <p className="entradilla">{_new?.entradilla}</p>
+          {isDetail ? <p className="description">{_new?.description}</p> : null}
+          {!isDetail ? <Link to={`/new/${_new?.id}`}>+ info</Link> : null}
+        </div>
+        {_new?.url ? (
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${_new?.url}`}
+            alt={_new?.title}
+          />
         ) : null}
       </div>
-
-      {_new?.url ? (
-        <img
-          src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_IMAGES_DIR}/${_new?.url}`}
-          alt={_new?.title}
-        />
-      ) : null}
-
-      {error ? <p>{error}</p> : null}
-      {confirmMessage ? (
-        <>
-          <p>{confirmMessage}</p>
-        </>
-      ) : null}
-
       {user && user.id === _new.user_id ? (
-        <section>
+        <section className="deleteEdit">
           <button
             onClick={() => {
               removeNew(_new.id);
@@ -106,6 +81,39 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
           </button>
           {error ? <p>{error}</p> : null}
         </section>
+      ) : null}
+      <div className="newData">
+        <div>
+          {_new.votes ? <p className="votes">Votos: {_new.votes}</p> : null}
+          {_new.user_id ? (
+            <div>
+              <span>by</span>
+              <Link className="author" to={`/user/${_new?.user_id}`}>
+                {_new?.name}
+              </Link>
+            </div>
+          ) : null}
+          {_new.createdAt ? (
+            <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+          ) : null}
+        </div>
+        <p className="topic">{_new?.topic}</p>
+        {user ? (
+          <button
+            onClick={() => {
+              voteNew(_new.id);
+            }}
+          >
+            Votar
+          </button>
+        ) : null}
+      </div>
+
+      {error ? <p>{error}</p> : null}
+      {confirmMessage ? (
+        <>
+          <p>{confirmMessage}</p>
+        </>
       ) : null}
     </article>
   );

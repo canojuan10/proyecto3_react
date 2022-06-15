@@ -13,12 +13,14 @@ export const Home = () => {
   return (
     <div>
       <h2>ÚLTIMAS NOTICIAS</h2>
-      <div>
+      <div className="filterCalendar">
         <Calendar date={date} setDate={setDate} />
         <NewsFilter setTopic={setTopic} topic={topic} />
       </div>
-      <NewsList news={news} error={error} deleteNew={deleteNew} />
-      <ListbyVotes error={error} />
+      <div className="newsZone">
+        <NewsList news={news} error={error} deleteNew={deleteNew} />
+        <ListbyVotes error={error} />
+      </div>
     </div>
   );
 };
