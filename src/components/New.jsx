@@ -43,7 +43,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       setError(error.message);
       setTimeout(() => {
         setError("");
-      }, 2000);
+      }, 2000)
     }
   };
 
