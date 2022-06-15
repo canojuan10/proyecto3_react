@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-
+import { Error, errorFetchMessage } from "./Error";
 import { dateFormater } from "../helpers/formatDate";
 import { getNewsByVotes } from "../services";
 import { Loading, loadResultsMessage } from "./Loading";
 import { New } from "./New";
 
-export const ListbyVotes = () => {
+export const ListbyVotes = ({ error }) => {
   const [newsVotes, setNewsVotes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [errorLoad, setErrorLoad] = useState("");
+
   const [date, setDate] = useState(dateFormater(new Date()));
 
   useEffect(() => {
@@ -16,11 +17,9 @@ export const ListbyVotes = () => {
       try {
         setLoading(true);
         const data = await getNewsByVotes({ date });
-        console.log(data);
-
         setNewsVotes(data);
       } catch (error) {
-        setError(error.message);
+        setErrorLoad(error.message);
       } finally {
         setLoading(false);
       }
@@ -45,7 +44,7 @@ export const ListbyVotes = () => {
       </ul>
     </div>
   ) : error ? (
-    <h2>Problemas de conexión con el servidor</h2>
+    <Error message={errorFetchMessage} />
   ) : (
     <p>No hay noticias sobre el tema</p>
   );

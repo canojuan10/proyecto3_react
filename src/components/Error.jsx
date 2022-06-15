@@ -1,4 +1,5 @@
 import propTypes from "prop-types";
+import "./style.css";
 import error from "../image/error.png";
 export const Error = ({ message }) => {
   return (
@@ -10,6 +11,9 @@ export const Error = ({ message }) => {
     </>
   );
 };
+export const errorPasswordMessage = "Password incorrecto.";
+export const errorEditPasswordMessage =
+  "Validación de password incorrecta. Por favor, compruebe que todos los campos han sido cubiertos correctamente.";
 export const errorFetchMessage = "Error de conexión con el servidor.";
 Error.propTypes = {
   message: propTypes.string.isRequired,

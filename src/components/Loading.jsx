@@ -17,6 +17,7 @@ export const sendFormMessage = "Enviando formulario de registro...";
 export const editUserMessage = "Actualizando información de usuario...";
 export const createNewMessage = "Creando noticia...";
 export const deleteUserMessage = "Borrando usuario...";
+export const editPasswordMessage = "Actualizando password...";
 Loading.propTypes = {
   message: propTypes.string.isRequired,
 };

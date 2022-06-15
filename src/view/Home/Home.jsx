@@ -19,7 +19,7 @@ export const Home = () => {
       </div>
       <div className="newsZone">
         <NewsList news={news} error={error} deleteNew={deleteNew} />
-        <ListbyVotes />
+        <ListbyVotes error={error} />
       </div>
     </div>
   );

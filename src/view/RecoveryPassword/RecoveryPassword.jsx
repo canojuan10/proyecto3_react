@@ -64,7 +64,7 @@ export const RecoveryPassword = () => {
         <InputStringRegister
           value={recoverCode}
           setValue={setRecoverCode}
-          inputType="text"
+          inputType="password"
           name="recoverCode"
           label="Recover Code: "
         />

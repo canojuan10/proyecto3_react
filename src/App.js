@@ -13,6 +13,7 @@ import { CreateNew } from "./view/CreateNew/CreateNew";
 import { EditNew } from "./view/EditNew/EditNew";
 import { RecoveryPassword } from "./view/RecoveryPassword/RecoveryPassword";
 import { EditUser } from "./view/EditUser/EditUser";
+import { EditPassword } from "./view/EditPassword/EditPassword";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/edit/:idNew" element={<EditNew />}></Route>
         <Route path="/createnew" element={<CreateNew />}></Route>
+        <Route path="/user/:idUser/password" element={<EditPassword />}></Route>
         <Route
           path="/user/validate/:registrationCode"
           element={<ValidationCode />}
