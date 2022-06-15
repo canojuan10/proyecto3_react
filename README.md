@@ -110,16 +110,17 @@ On the right side we can see the most voted news.</p>
 <h3>Regiter-Create user</h3>
 <img src='./src/image/register.png' width=100%>
 <p>In order to create a user, we must register with our email, pass and username. The bio is optional.</p>
+<p>To finish the registration process, we must visit the link, which will be sent to our email account. Please, review the <a href='https://github.com/wicket-warrick/PROXECTO2_NODE#getting-started'>API-REST  documentation linked</a>.</p>
+<h3>Loggin</h3>
 <img src='./src/image/loggin.png' width=100%>
-<img src='./src/image/user.png' width=100%>
+<p>To be able to log in to the app, we will do it with the email account and the pass with which we registered.</p>
+<h3>Create New</h3>
 <img src='./src/image/createNew.png' width=100%>
+<p>To create news, we will do it from the Home view.<p>
+<p>You can edit your news, and change the image.</p>
+<h3>User</h3>
 <img src='./src/image/user.png' width=100%>
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p>From your profile, you can perform the basic operations of editing user and deleting user.</p>
 
 <!-- CONTACT -->
 
@@ -132,13 +133,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [![GitHub][github-shield]](https://github.com/wicket-warrick)
 
 <h3>Juan Fernández</h3>
+
 [![Linkedin][linkedin-shield]](https://www.linkedin.com/in/juanfernandezmirandacano)
 
 [![GitHub][github-shield]](https://github.com/canojuan10)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
 
