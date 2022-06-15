@@ -102,6 +102,19 @@ B. DOWNLOAD the repo.
 
 ## Usage
 
+<h3>Home</h3>
+<img src='./src/image/screenshot.png' width=100%>
+<p>
+In the home view, we have access to the latest news, being able to select the filtering date.
+On the right side we can see the most voted news.</p>
+<h3>Regiter-Create user</h3>
+<img src='./src/image/register.png' width=100%>
+<p>In order to create a user, we must register with our email, pass and username. The bio is optional.</p>
+<img src='./src/image/loggin.png' width=100%>
+<img src='./src/image/user.png' width=100%>
+<img src='./src/image/createNew.png' width=100%>
+<img src='./src/image/user.png' width=100%>
+
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
