@@ -45,7 +45,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 HAB 2022 final project. FrontEnd for the API-REST of collaborative news, previously carried out. In the following <a href="https://github.com/wicket-warrick/PROXECTO2_NODE">link</A> you can find the BackEnd repository.</br>
 The functionalities of creating user, logging...etc... have been developed. They will be described in the following document.
@@ -154,3 +154,4 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
 [github-shield]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
+[product-screenshot]: images/screenshot.png
