@@ -308,3 +308,27 @@ export const getNewsByVotes = async ({ date }) => {
 
   return json.data;
 };
+
+export const editPassword = async ({
+  idUser,
+  currentPassword,
+  newPassword,
+  token,
+}) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/user/${idUser}/password`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ currentPassword, newPassword }),
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json;
+};
