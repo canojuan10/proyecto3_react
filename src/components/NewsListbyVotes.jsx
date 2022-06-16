@@ -44,7 +44,10 @@ export const ListbyVotes = ({ error }) => {
       </ul>
     </div>
   ) : error ? (
-    <Error message={errorFetchMessage} />
+    <div className="errorListNewsByVotes">
+      <h3>NOTICIAS MEJOR VALORADAS</h3>
+      <Error message={errorFetchMessage} />
+    </div>
   ) : (
     <p>No hay noticias sobre el tema</p>
   );

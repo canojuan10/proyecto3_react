@@ -35,20 +35,20 @@ export const EditNew = () => {
         token,
         idNew,
       });
-      if (data.photo) {
+      if (_new.image_id) {
         const idPhoto = _new.image_id;
         await deletePhotoService({
           idNew,
           idPhoto,
           token,
         });
-        const responseUpdatePhoto = await uploadNewPhotoServices({
-          idNew,
-          token,
-          data: data.photo,
-        });
-        setMessageConfirmUpdatePhoto(responseUpdatePhoto);
       }
+      const responseUpdatePhoto = await uploadNewPhotoServices({
+        idNew,
+        token,
+        data,
+      });
+      setMessageConfirmUpdatePhoto(responseUpdatePhoto);
       setMessageConfirmEditNew(response);
       setLoadingForm(false);
     } catch (error) {
@@ -69,7 +69,7 @@ export const EditNew = () => {
     <div className="editNew">
       <h2>Editar Noticia</h2>
       <CreateNewForm newValue={_new} handleForm={handleForm} />
-      {error ? <Error message={error} /> : null}
+      {error ? <p className="errorMessage">{error}</p> : null}
     </div>
   );
 };

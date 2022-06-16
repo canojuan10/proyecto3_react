@@ -24,8 +24,13 @@ export const UserManagment = () => {
         </div>
         <div className="userData">
           <span>Logged in as </span>
-          <Link to={`/user/${user.id}`}>{` ${user.name}`}</Link>{" "}
-          <button onClick={() => logout()}>
+          <Link to={`/user/${user.id}`}>{` ${user.name}`}</Link>
+          <button
+            onClick={() => {
+              logout();
+              navigate("/");
+            }}
+          >
             <img
               src={logoutIcon}
               alt="logout"

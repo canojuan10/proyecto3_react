@@ -92,7 +92,7 @@ export const CreateNew = () => {
         </fieldset>
         <button>Subir noticia</button>
       </form>
-      {error ? <p>{error}</p> : null}
+      {error ? <p className="errorMessage">{error}</p> : null}
     </div>
   );
 };

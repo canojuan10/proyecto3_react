@@ -66,3 +66,74 @@
   color: #d1603d;
   margin-left: 90px;
 }
+.errorMessage {
+  color: red;
+  font-size: var(--h3-font-size);
+  font-weight: 500;
+  align-self: center;
+  margin-left: 5rem;
+}
+@media (max-width: 400px) {
+  .App .createNew h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .App .createNew .createNewForm {
+    flex-grow: 1;
+    margin: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.25rem;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+  }
+  .createNewForm fieldset {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 0.25rem;
+  }
+  .createNewForm fieldset label,
+  .labelImg {
+    font-weight: 500;
+  }
+  .createNewForm fieldset input,
+  .createNewForm fieldset textarea,
+  .createNewForm fieldset select {
+    background-color: #d9d9d9;
+    border: 2px solid var(--main-orange-color);
+    width: 300px;
+    padding: 0.25rem 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .createNewForm fieldset textarea {
+    min-height: 150px;
+  }
+  .createNewForm button {
+    border: none;
+    padding: 0.25rem 0.75rem;
+    background-color: transparent;
+    font-weight: 500;
+    cursor: pointer;
+    color: #d1603d;
+    margin: 0 auto;
+  }
+  .errorMessage {
+    color: red;
+    font-size: var(--h3-font-size);
+    font-weight: 500;
+    align-self: center;
+    margin-left: 5rem;
+  }
+}

@@ -17,7 +17,9 @@ export const NewsList = ({ news, error, deleteNew }) => {
         })}
     </ul>
   ) : error ? (
-    <Error message={errorFetchMessage} />
+    <div className="errorListNews">
+      <Error message={errorFetchMessage} />
+    </div>
   ) : (
     <p>No hay noticias sobre el tema</p>
   );

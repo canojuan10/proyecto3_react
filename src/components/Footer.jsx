@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer>
       <p>© 2022 HACK A BOSS</p>
-      <p className="linkedInLink">
+      <div className="linkedInLink">
         <img src={linkedInIcon} alt="linkedIn link" />
         <a
           className="linkedInJuan"
@@ -25,7 +25,7 @@ export const Footer = () => {
         >
           <span>Hugo Suárez</span>
         </a>
-      </p>
+      </div>
       <div className="gitHubLinks">
         <a
           href="https://github.com/wicket-warrick/PROXECTO2_NODE"
