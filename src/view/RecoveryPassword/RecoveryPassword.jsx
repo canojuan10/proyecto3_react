@@ -76,8 +76,8 @@ export const RecoveryPassword = () => {
           label="New Password: "
         />
         <button>Resetear Contraseña</button>
-        {error ? <Error message={error} /> : null}
       </form>
+      {error ? <Error message={error} /> : null}
     </section>
   ) : (
     <div className="return">
