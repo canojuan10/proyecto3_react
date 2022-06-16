@@ -46,8 +46,8 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
     <Error message={error} />
   ) : (
     <>
-      <h1>Editar Avatar</h1>
-      <form className="createNew" onSubmit={handleForm}>
+      <h2>Editar Avatar</h2>
+      <form className="createNewAvatar" onSubmit={handleForm}>
         <fieldset>
           {userData.url ? (
             <img
@@ -56,10 +56,16 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
               style={{ width: "75px" }}
             />
           ) : null}
-          <label htmlFor="image">Imagen</label>
-          <input type="file" name="photo" id="image" accept={"image/*"} />
+
+          <input
+            className="button"
+            type="file"
+            name="photo"
+            id="image"
+            accept={"image/*"}
+          />
         </fieldset>
-        <button>Subir Avatar</button>
+        <button className="button">Subir Avatar</button>
       </form>
     </>
   );

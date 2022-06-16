@@ -12,8 +12,7 @@ export const Error = ({ message }) => {
   );
 };
 export const errorPasswordMessage = "Password incorrecto.";
-export const errorEditPasswordMessage =
-  "Validación de password incorrecta. Por favor, compruebe que todos los campos han sido cubiertos correctamente.";
+export const errorEditPasswordMessage = `Compruebe que todos los campos han sido cubiertos correctamente.`;
 export const errorFetchMessage = "Error de conexión con el servidor.";
 Error.propTypes = {
   message: propTypes.string.isRequired,
