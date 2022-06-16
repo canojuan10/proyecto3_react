@@ -5,6 +5,7 @@
 }
 
 .App .user {
+  flex-grow: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,7 @@
 .App .user img {
   border-radius: 50%;
   width: 300px;
+  height: 300px;
   border: solid 2px;
   border-color: var(--main-orange-color);
 }
@@ -55,6 +57,11 @@
   align-items: center;
   justify-content: space-around;
 }
+.App .user .createNewAvatar fieldset img {
+  border: none;
+  width: 100px;
+  height: 100px;
+}
 .App .user .createNewAvatar input {
   max-width: 300px;
 }
@@ -64,33 +71,31 @@
   justify-content: center;
   align-items: center;
 }
-/* 
-.App .return {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+@media (max-width: 750px) {
+  .App .user .userData {
+    width: 90%;
+  }
+  .App .user img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: solid 2px;
+    border-color: var(--main-orange-color);
+  }
+  .App .user .createNewAvatar fieldset {
+    width: 300px;
+  }
+  .App .user .createNewAvatar fieldset img {
+    width: 75px;
+    height: 75px;
+  }
+  .App .user .createNewAvatar input {
+    max-width: 250px;
+  }
+  .App .user .createNewAvatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
-
-.App .return h4 {
-  text-align: center;
-  padding: 2rem;
-}
-
-.return button {
-  border: none;
-  padding: 0.25rem 0.75rem;
-  background-color: transparent;
-  font-weight: 500;
-  cursor: pointer;
-  color: #d1603d;
-}
-
-.error {
-  text-align: center;
-  margin: 2rem;
-  padding-left: 80px;
-}
-.error img {
-  padding-bottom: 2rem;
-} */

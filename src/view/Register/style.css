@@ -2,6 +2,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .App .register .registerForm {
@@ -70,4 +71,68 @@
   width: 250px;
   padding: 2rem;
   padding-bottom: 1rem;
+}
+@media (max-width: 750px) {
+  .App .register h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .App .register .registerForm {
+    flex-grow: 1;
+    margin: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.25rem;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+  }
+  .registerForm fieldset {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 0.25rem;
+  }
+  .registerForm fieldset label,
+  .labelImg {
+    font-weight: 500;
+  }
+  .registerForm fieldset input,
+  .registerForm fieldset textarea,
+  .registerForm fieldset select {
+    background-color: #d9d9d9;
+    border: 2px solid var(--main-orange-color);
+    width: 300px;
+    padding: 0.25rem 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .registerForm fieldset textarea {
+    min-height: 150px;
+  }
+  .registerForm button {
+    border: none;
+    padding: 0.25rem 0.75rem;
+    background-color: transparent;
+    font-weight: 500;
+    cursor: pointer;
+    color: #d1603d;
+    margin: 0 auto;
+  }
+  .errorMessage {
+    color: red;
+    font-size: 20px;
+    font-weight: 500;
+    align-self: center;
+    margin-left: 0.25rem;
+  }
 }
