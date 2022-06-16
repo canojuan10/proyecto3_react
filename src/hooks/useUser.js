@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getUserByIdService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
 export const useUser = (idUser) => {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const { refetchUser, setRefetchUser } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("quetal");
     const load = async () => {
       try {
         setLoading(true);
@@ -20,7 +21,7 @@ export const useUser = (idUser) => {
       }
     };
     load();
-  }, [idUser]);
+  }, [idUser, refetchUser]);
 
-  return { userData, error, loading, setError };
+  return { userData, error, loading, setError, setRefetchUser, refetchUser };
 };

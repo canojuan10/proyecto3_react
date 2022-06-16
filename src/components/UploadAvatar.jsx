@@ -10,10 +10,11 @@ import { Loading, editUserMessage } from "./Loading";
 import { errorFetchMessage, Error } from "./Error";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+
 export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
   const [error, setError] = useState("");
   const { idUser } = useParams();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setRefetchUser, refetchUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleForm = async (e) => {
@@ -37,6 +38,7 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
       const editedUser = await getUserByIdService(idUser);
       setUser(editedUser);
       setUrl(editedUser.url);
+      setRefetchUser(!refetchUser);
       setLoading(false);
     }
   };

@@ -9,6 +9,7 @@ import "./style.css";
 export const UserManagment = () => {
   const { user, logout } = useContext(AuthContext);
   const { userData } = useUser(user?.id);
+
   const navigate = useNavigate();
   return user ? (
     <section>
