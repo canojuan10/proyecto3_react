@@ -25,6 +25,7 @@
   font-weight: 300;
 }
 img {
+  object-fit: cover;
   width: 300px;
 }
 body,

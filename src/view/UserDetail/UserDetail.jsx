@@ -7,7 +7,6 @@ import "./style.css";
 export const UserDetail = () => {
   const { idUser } = useParams();
   const { userData, loading, error } = useUser(idUser);
-
   return error ? (
     <Error message={error} />
   ) : !loading ? (

@@ -10,7 +10,6 @@ export const UserManagment = () => {
   const { user, logout } = useContext(AuthContext);
   const { userData } = useUser(user?.id);
   const navigate = useNavigate();
-  console.log(user);
   return user ? (
     <section>
       <div>
@@ -19,7 +18,7 @@ export const UserManagment = () => {
             <img
               src={`${process.env.REACT_APP_BACKEND}/${process.env.REACT_APP_BACKEND_AVATAR_DIR}/${userData.url}`}
               alt={userData?.name}
-              style={{ width: "40px", borderRadius: "50%" }}
+              style={{ width: "40px", height: "40px", borderRadius: "50%" }}
             />
           ) : null}
         </div>

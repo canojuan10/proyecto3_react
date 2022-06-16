@@ -1,15 +1,17 @@
+import "./style.css";
+
 export const NotFound = () => {
   return (
     <>
-      <h2>Page not found</h2>
-      <p>
+      <h2 className="notFoundTitle">Page not found</h2>
+      <p className="notFoundMessage">
         We're sorry, we couldn't find the page you requested, but you can find
-        us in:
+        us in linkedIn:
       </p>
-      <ul>
+      <ul className="notFoundLinks">
         <li>
           <a
-            href="https://github.com/canojuan10"
+            href="https://www.linkedin.com/in/juanfernandezmirandacano"
             target="_blank"
             rel="noreferrer"
           >
@@ -18,7 +20,7 @@ export const NotFound = () => {
         </li>
         <li>
           <a
-            href="https://github.com/wicket-warrick"
+            href="https://www.linkedin.com/in/hugosuarezdevp"
             target="_blank"
             rel="noreferrer"
           >

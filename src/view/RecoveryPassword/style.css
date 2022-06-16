@@ -22,14 +22,13 @@
   margin-left: 2rem;
 }
 .App .recoveryPass .recoveryPassForm {
-  flex-grow: 1;
   margin: 0;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 0.25rem 0.25rem;
+  justify-content: center;
+
   border: none;
   background-color: transparent;
   resize: none;
@@ -46,7 +45,7 @@
   justify-content: space-between;
   width: 600px;
   align-items: center;
-  padding-bottom: 2rem;
+  padding: 2rem 0rem;
 }
 .recoveryPassForm fieldset label,
 .labelImg,
@@ -100,15 +99,17 @@
   width: 150px;
 }
 
-.resetPassForm .error {
+.recoveryPass .error {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 2rem 0rem;
 }
 .resetPass .error {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding-bottom: 7rem;
 }

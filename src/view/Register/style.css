@@ -62,10 +62,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   margin-left: 90px;
+  padding: 2rem;
 }
 .registerForm .error img {
-  padding-bottom: 1rem;
   width: 250px;
+  padding: 2rem;
+  padding-bottom: 1rem;
 }

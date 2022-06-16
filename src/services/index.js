@@ -185,7 +185,6 @@ export const getUserByIdService = async (idUser) => {
     `${process.env.REACT_APP_BACKEND}/user/${idUser}`
   );
   const json = await response.json();
-
   if (!response.ok) throw new Error(json.message);
   return json.data;
 };
@@ -240,7 +239,7 @@ export const uploadAvatarService = async ({ data, token, id }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json.message;
+  return json.data.message;
 };
 
 export const resetPassService = async ({ recoverCode, newPassword }) => {
