@@ -43,7 +43,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
       setError(error.message);
       setTimeout(() => {
         setError("");
-      }, 2000)
+      }, 2000);
     }
   };
 
@@ -63,7 +63,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
           />
         ) : null}
       </div>
-      {user && user.id === _new.user_id ? (
+      {isDetail && user && user.id === _new.user_id ? (
         <section className="deleteEdit">
           <button
             onClick={() => {

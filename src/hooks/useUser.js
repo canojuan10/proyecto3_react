@@ -5,7 +5,9 @@ export const useUser = (idUser) => {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    console.log("quetal");
     const load = async () => {
       try {
         setLoading(true);

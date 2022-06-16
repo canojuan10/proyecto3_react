@@ -159,6 +159,7 @@ export const deletePhotoService = async ({ idPhoto, idNew, token }) => {
   );
 
   const json = await response.json();
+
   if (!response.ok) {
     throw new Error(json.message);
   }

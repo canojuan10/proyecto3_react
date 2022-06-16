@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext(null);
-
 export const AuthContextProvider = ({ children }) => {
+  // const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null

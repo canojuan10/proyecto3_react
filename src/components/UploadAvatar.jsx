@@ -28,7 +28,7 @@ export const UploadAvatar = ({ token, id, userData, setUrl, setEdited }) => {
         await uploadAvatarService({ id, data, token });
         setEdited(false);
         setTimeout(() => {
-          navigate("/");
+          navigate(`/user/${id}`);
         }, 500);
       }
     } catch (error) {
