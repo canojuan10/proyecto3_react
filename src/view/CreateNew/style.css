@@ -73,7 +73,7 @@
   align-self: center;
   margin-left: 5rem;
 }
-@media (max-width: 400px) {
+@media (max-width: 750px) {
   .App .createNew h2 {
     margin-left: auto;
     margin-right: auto;
@@ -131,9 +131,9 @@
   }
   .errorMessage {
     color: red;
-    font-size: var(--h3-font-size);
+    font-size: 20px;
     font-weight: 500;
     align-self: center;
-    margin-left: 5rem;
+    margin-left: 0.25rem;
   }
 }

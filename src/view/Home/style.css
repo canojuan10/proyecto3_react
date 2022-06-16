@@ -65,7 +65,7 @@
 .list-by-votes li article {
   border-color: #16697a;
 }
-@media (max-width: 400px) {
+@media (max-width: 1250px) {
   .App div div {
     display: flex;
     align-items: flex-start;
@@ -73,12 +73,26 @@
     gap: 1rem;
   }
   .listNews {
+    margin: 1rem auto;
+  }
+  .list-by-votes {
+    width: 65%;
+  }
+  .list-by-votes li article img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+@media (max-width: 750px) {
+  .listNews {
     width: 95%;
   }
   .list-by-votes {
     width: 95%;
     display: flex;
     flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
   }
   .list-by-votes h3 {
     margin-bottom: 1rem;
