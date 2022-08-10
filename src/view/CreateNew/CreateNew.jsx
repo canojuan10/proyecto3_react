@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { sendNewService } from "../../services";
 import { Topics } from "../../components/Topics";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Loading, createNewMessage } from "../../components/Loading";
 import "./style.css";
 
@@ -39,7 +39,7 @@ export const CreateNew = () => {
   return loading ? (
     <Loading message={createNewMessage} />
   ) : messageConfirm ? (
-    <>
+    <div>
       <p>{messageConfirm.messageNew}</p>
       <p>{messageConfirm.messageImage}</p>
       <button
@@ -49,7 +49,7 @@ export const CreateNew = () => {
       >
         Volver a inicio
       </button>
-    </>
+    </div>
   ) : (
     <div className="createNew">
       <h2>Añadir noticias</h2>
@@ -92,7 +92,11 @@ export const CreateNew = () => {
         </fieldset>
         <button>Subir noticia</button>
       </form>
-      {error ? <p className="errorMessage">{error}</p> : null}
+      {error ? (
+        <div>
+          <p className="errorMessage">{error}</p>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -30,9 +30,7 @@ header > nav {
   align-self: flex-end;
   margin: 0;
 }
-/* .registerLogin {
-  margin-bottom: 2.75rem;
-} */
+
 .registerLogin li .login {
   margin-top: 0.25rem;
   display: flex;
@@ -49,6 +47,10 @@ header > nav > section button {
   background-color: transparent;
   color: white;
   cursor: pointer;
+}
+header>nav>section .createNew {
+  color: #d1603d;
+  font-weight: bold;
 }
 header > nav > section .createNew img {
   margin-left: 0.4rem;

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Error } from "../../components/Error";
-import { Loading } from "../../components/Loading";
 import { validateUser } from "../../services";
 import "./style.css";
 export const ValidationCode = () => {
@@ -24,11 +23,11 @@ export const ValidationCode = () => {
   }, [registrationCode, navigate]);
 
   return (
-    <section className="validation">
+    <div className="validation">
       {error ? (
-        <>
+        <div>
           <Error message={error} />
-        </>
+        </div>
       ) : (
         <h4>{validateMessage}</h4>
       )}
@@ -39,6 +38,6 @@ export const ValidationCode = () => {
       >
         Volver a inicio
       </button>
-    </section>
+    </div>
   );
 };

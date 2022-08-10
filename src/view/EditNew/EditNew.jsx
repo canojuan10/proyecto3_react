@@ -59,12 +59,12 @@ export const EditNew = () => {
   return loadingForm ? (
     <Loading message={sendFormMessage} />
   ) : messageConfirmEditNew || messageConfirmUpdatePhoto ? (
-    <>
+    <div>
       {messageConfirmEditNew ? <p>{messageConfirmEditNew}</p> : null}
       {messageConfirmUpdatePhoto ? <p>{messageConfirmUpdatePhoto}</p> : null}
 
       <Link to={`/new/${idNew}`}>Volver a la noticia</Link>
-    </>
+    </div>
   ) : (
     <div className="editNew">
       <h2>Editar Noticia</h2>

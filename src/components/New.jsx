@@ -16,7 +16,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
   const [error, setError] = useState("");
   const [confirmMessage, setConfirmMessage] = useState("");
 
-  const removeNew = async (idNew) => {
+  const removeNew = async (idNew) => {if(window.confirm("¿Estás seguro de borrar la noticia?")){
     try {
       if (_new.image_id) {
         await deletePhotoService({ idNew, token, idPhoto: _new.image_id });
@@ -30,7 +30,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
     } catch (error) {
       setError(error.message);
     }
-  };
+  }};
 
   const voteNew = async (id) => {
     try {
@@ -94,7 +94,7 @@ export const New = ({ _new, deleteNew, isDetail = false }) => {
             </div>
           ) : null}
           {_new.createdAt ? (
-            <p className="createdAt">{stringDateFormater(_new?.createdAt)}</p>
+            <p className="createdAt">{stringDateFormater(_new?.createdAt,true)}</p>
           ) : null}
         </div>
         <p className="topic">{_new?.topic}</p>

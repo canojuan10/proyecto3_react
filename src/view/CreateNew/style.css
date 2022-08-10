@@ -69,9 +69,20 @@
 .errorMessage {
   color: red;
   font-size: var(--h3-font-size);
+  
   font-weight: 500;
   align-self: center;
   margin-left: 5rem;
+}
+
+ button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d1603d;
+  margin-left: 90px;
 }
 @media (max-width: 750px) {
   .App .createNew h2 {
