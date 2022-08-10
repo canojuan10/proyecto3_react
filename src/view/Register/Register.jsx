@@ -87,6 +87,7 @@ export const Register = () => {
           name="bio"
           label="Biografía: "
           placeholder="Cuentanos algo de ti..."
+          required={false}
         />
 
         <button>Crear usuario</button>
