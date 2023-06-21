@@ -6,8 +6,9 @@ export const InputTextArea = ({
   name,
   label,
   placeholder,
+  required=true
 }) => {
-  return (
+  return required ? (
     <fieldset>
       <label htmlFor={name}>{label}</label>
       <textarea
@@ -15,6 +16,18 @@ export const InputTextArea = ({
         id={name}
         value={value}
         required
+        onChange={(e) => setValue(e.target.value)}
+        autoComplete="off"
+        placeholder={placeholder}
+      />
+    </fieldset>
+  ) : (
+    <fieldset>
+      <label htmlFor={name}>{label}</label>
+      <textarea
+        name={name}
+        id={name}
+        value={value}
         onChange={(e) => setValue(e.target.value)}
         autoComplete="off"
         placeholder={placeholder}
