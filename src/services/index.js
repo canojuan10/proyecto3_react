@@ -217,7 +217,7 @@ export const deleteUserService = async ({ idUser, token }) => {
       },
     }
   );
-  const json = await response.json;
+  const json = await response.json ();
 
   if (!response.ok) {
     throw new Error(json.message);
